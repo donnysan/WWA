@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weight Watcher Assistant</title>
+        <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<link href="./css/jquery.mobile-1.3.2.min.css" rel="stylesheet">
+
+	<link href="./css/codiqa.ext.min.css" rel="stylesheet">
+ 
+
+    </head>
+    <body>
+	<!-- Start of Landing page -->
+	<div data-role="page" id="home">
+    	    <div data-role="header" data-theme="b" >
+                <h1>Home Page</h1>		
+    	    </div><!-- /header --> 	    
+            <div data-role="content" data-theme="e">    
+        	<div class="ui-grid-b">
+            	    <div class="ui-block-a" style="text-align:center;">
+                	<a href="wizard.html?id=page1-unit-settings&showButtons=true" style="text-decoration: none;" rel="external"><img src="./img/Buttons/Diary.png" alt="My Daily<br>Points"><p>My Daily<br>Points</p></a>
+            	    </div>
+            	    <div class="ui-block-b" style="text-align:center;">
+                	<a href="#" style="text-decoration: none;"><img src="./img/Buttons/Calculator.jpg" alt="Points<br>Calculator"><p>Points<br>Calculator</p</a>
+            	    </div>
+            	    <div class="ui-block-c" style="text-align:center;">
+                	<a href="#" style="text-decoration: none;"><img src="./img/Buttons/list.jpg" alt="Points<br>List"><p>Points<br>List</p</a>
+            	    </div>
+            	    <div class="ui-block-a" style="text-align:center;">
+                	<a href="#Settings" style="text-decoration: none;" rel="external"><img src="./img/Buttons/gear.jpg" alt="Settings"><p>Settings</p></a>	
+            	    </div>
+            	    <div class="ui-block-b" style="text-align:center;">
+                	<img src="./img/WWA.png" alt="WWA">
+            	    </div>
+            	    <div class="ui-block-c" style="text-align:center;">
+                	<a href="#books" style="text-decoration: none;" rel="external"><img src="./img/Buttons/help.jpg" alt="Help"><p>Help</p></a>
+            	    </div>
+            	    <div class="ui-block-a" style="text-align:center;">
+   	
+            	    </div>
+            	    <div class="ui-block-b" style="text-align:center;">
+                	<a href="#" style="text-decoration: none;"><img src="./img/Buttons/Smiley.gif" alt="Weight<br>Progress"><p>Weight<br>Progress</p></a>
+            	    </div>
+            	    <div class="ui-block-c" style="text-align:center;">
+
+            	    </div>
+        	</div>
+            </div><!-- /content --> 
+            <div data-role="footer" data-theme="b">
+                <h4>Page Footer</h4>
+            </div><!-- /footer -->
+	</div><!-- / Landing page -->
+
+        <!-- Start of Settings page -->
+        <div data-role="page" data-control-title="Settings" id="Settings">
+      
+            <div data-theme="b" data-role="header">
+          
+	        <h5>
+Settings</h5>
+   
+		<a id="btn-compose" href="#home" data-icon="home-page" data-iconpos="right" data-inline="true" data-role="button" class="ui-btn-left">Home</a>   
+	    </div>
+      
+	    <div data-role="content">
+          
+	        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+              
+		    <li data-role="list-divider" role="heading">Units</li>
+              
+		    <li data-theme="c">
+                  
+		        <a href="wizard.html?id=page1-unit-settings&showButtons=false" data-transition="slide" rel="external">Unit Settings</a>
+              
+	            </li>
+          
+	        </ul>
+          
+	        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+              
+		    <li data-role="list-divider" role="heading">
+My Weight
+</li>
+              
+		    <li data-theme="c">
+                  
+		        <a href="wizard.html?id=page2-weight-settings&showButtons=false" data-transition="slide" rel="external">Weight Settings</a>
+              
+		    </li>
+         
+	        </ul>
+          
+    	        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+              
+		    <li data-role="list-divider" role="heading">Daily Points Allowance
+</li>
+              
+		    <li data-theme="c">
+                  
+		        <a href="wizard.html?id=page3-points-allowance-settings&showButtons=false" data-transition="slide" rel="external">
+Daily Point Settings</a>
+              
+		    </li>
+          
+	        </ul>
+          
+	        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+              
+		    <li data-role="list-divider" role="heading">
+Weekly Points (Plus Plan Only)
+</li>
+              
+		    <li data-theme="c">
+                  
+		        <a href="#" data-transition="slide" rel="external">
+Weekly Points Settings
+                      
+			    <span class="ui-li-count">
+Enabled
+</span>
+                  
+		        </a>
+              
+		    </li>
+          
+	        </ul>
+          
+	        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+              
+		    <li data-role="list-divider" role="heading">My Activity</li>
+              
+		    <li data-theme="c">
+                  
+		        <a href="wizard.html?id=page4-actvity-settings&showButtons=false" data-transition="slide" rel="external">Activity Settings
+</a>
+              
+		    </li>
+          
+	        </ul>
+      	
+	    </div>
+      
+	    <div data-theme="b" data-role="footer" data-position="fixed">
+          
+	        <h3>
+              WWA
+          </h3>
+      
+	    </div>
+  
+        </div>
+ <!-- /Settings page --> 
+
+	<!-- Start of Page boilerplate page -->
+	<div data-role="page" id="#">
+    	    <div data-role="header" data-theme="b">
+                <h1>Header</h1>
+    	    </div><!-- /header -->
+            <div data-role="content" data-theme="c">   
+
+            </div><!-- /content -->
+ 
+            <div data-role="footer" data-theme="b" >
+                <h4>Footer</h4>
+            </div><!-- /footer -->
+	</div><!-- /page -->	
+
+ 	<script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script> 
+	<script src="./js/jquery.mobile-1.3.2.min.js"></script>	   	
+        <script type="text/javascript" src="./js/KeyFilters.js"></script>  
+	<script type="text/javascript" src="./js/zebra_dialog.js"></script>
+ 
+	<script type="text/javascript" src="./js/zebra_datepicker.js"></script>
+   
+	<script src="./js/codiqa.ext.min.js"></script>
+  	
+    </body>
+</html>
