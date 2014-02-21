@@ -18,10 +18,11 @@ img.keypad-trigger {
 	padding: 0;
 	background-color: #fff;
 	color: #000;
-	border: 1px solid #888;
+	border: 1px solid #888;	
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
 	border-radius: 0.25em;
+	
 }
 .keypad-keyentry {
 	display: none;
@@ -66,7 +67,9 @@ img.keypad-trigger {
 .keypad-key, .keypad-special {
 	margin: 0.125em;
 	padding: 0em;
-	width: 2em;
+	/* width: 2em; */
+	width: 4em;
+	height: 4em;
 	background-color: #f4f4f4;
 	-moz-border-radius: 0.25em;
 	-webkit-border-radius: 0.25em;
