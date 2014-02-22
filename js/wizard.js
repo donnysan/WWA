@@ -47,24 +47,14 @@ $(document).ready(function() {
         $('#page1-unit-settings').show();
     });	
 
-
-$('#current-weight').keypad({keypadOnly: false, 
-    onClose: function(value, inst) { 
-        alert('Closed with value ' + value); 
-    } 
-});
-
-
     // KeyDown Key Filters   
-    //$('#current-weight').bind( 'keydown', { keys: [8, 9, 27, 13], val: $('#current-weight').val() }, OnKeyDown );
-    $('#goal-weight').bind( 'keydown', { keys: [8, 9, 27, 13], val: $('#goal-weight').val() }, OnKeyDown );
     $('#txtDPA').bind( 'keydown', { keys: [8, 9, 27, 13], val: $('#txtDPA').val() }, OnKeyDown );
 	
     // KeyUp Key Filters for Text Boxes 
     var min = 1;
     var max = 999;
-    var text_box_ids = ['#goal-weight, #txtUserSpecifiedDPA'];
-    var hidden_field_ids = ['#hGoalWeight, #hUserSpecifiedDPA'];
+    var text_box_ids = ['#txtUserSpecifiedDPA'];
+    var hidden_field_ids = ['#hUserSpecifiedDPA'];
     for (var index in hidden_field_ids) 
     {
 	$(text_box_ids[index]).bind( 
@@ -89,7 +79,25 @@ $('#current-weight').keypad({keypadOnly: false,
 	first_day_of_week: 0
     
     });
- 	
+ 
+
+    // Initialize numeric keypad data input for text boxes
+    $('#current-weight, #goal-weight').keypad(
+    {
+	prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
+	onKeypress: KeyPress,
+	layout: ['123' + $.keypad.CLOSE, '456' + $.keypad.BACK, '789' + $.keypad.CLEAR, '0']
+    });
+
+    // This function enforces max length constraint on text boxes that use numeric keypad data input
+    function KeyPress() 
+    { 
+	// Workaround to assign max length constraint to field.  Max attribute is being used for an inintended purpose.
+	// Whatever the string length is of the assigned this.max.length value is the maximum allowable field length.
+	var max_length = this.max.length;
+
+	if (this.value.length > max_length) this.value = this.value.substring(0, max_length);
+    }	
 });
 
 $(document).on('pageshow', '#wizard-page, #home-page', function (event, ui) {
@@ -119,6 +127,9 @@ function showDiv(pageId, show_buttons)
     if (!show_buttons) {
 	$(buttonGroupId).hide(); 
     }
+
+    // Test Code
+    //$('#page2-weight-settings-buttons').hide();
 }
 
 
