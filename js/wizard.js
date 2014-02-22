@@ -57,46 +57,44 @@ $(document).ready(function() {
     var hidden_field_ids = ['#hUserSpecifiedDPA'];
     for (var index in hidden_field_ids) 
     {
-	$(text_box_ids[index]).bind( 
-	    'keyup', 
-	    { 
-		//min: min,
-		max: max,
-		hidden_field_id: hidden_field_ids[index]
-	    }, 
-	    OnKeyUp 
-	); 
+		$(text_box_ids[index]).bind( 
+			'keyup', 
+			{ 
+			//min: min,
+			max: max,
+			hidden_field_id: hidden_field_ids[index]
+			}, 
+			OnKeyUp 
+		); 
     }
 
     // DatePicker Plug-In
     $('#test-datepicker').Zebra_DatePicker(
-    {
-        
-	direction: true,    // boolean true would've made the date picker future only but starting from today, rather than tomorrow
-	format: 'D, M d, Y',
-	show_clear_date: false,
-	show_select_today: false,
-	first_day_of_week: 0
-    
+    {       
+		direction: true,    // boolean true would've made the date picker future only but starting from today, rather than tomorrow
+		format: 'D, M d, Y',
+		show_clear_date: false,
+		show_select_today: false,
+		first_day_of_week: 0   
     });
  
 
     // Initialize numeric keypad data input for text boxes
-    $('#current-weight, #goal-weight').keypad(
+    $('#current-weight, #goal-weight, #txt-plus-age, #txt-plus-weight, #txt-classic-age, #txt-classic-weight, #txtUserSpecifiedDPA').keypad(
     {
-	prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
-	onKeypress: KeyPress,
-	layout: ['123' + $.keypad.CLOSE, '456' + $.keypad.BACK, '789' + $.keypad.CLEAR, '0']
+		prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
+		onKeypress: KeyPress,
+		layout: ['123' + $.keypad.CLOSE, '456' + $.keypad.BACK, '789' + $.keypad.CLEAR, '0']
     });
 
     // This function enforces max length constraint on text boxes that use numeric keypad data input
     function KeyPress() 
-    { 
-	// Workaround to assign max length constraint to field.  Max attribute is being used for an inintended purpose.
-	// Whatever the string length is of the assigned this.max.length value is the maximum allowable field length.
-	var max_length = this.max.length;
+    { 		
+		// Workaround to assign max length constraint to field.  Max attribute is being used for an inintended purpose.
+		// Whatever the string length is of the assigned this.max.length value is the maximum allowable field length.
+		var max_length = this.max != '' ? this.max.length : 9007199254740992;
 
-	if (this.value.length > max_length) this.value = this.value.substring(0, max_length);
+		if (this.value.length > max_length) this.value = this.value.substring(0, max_length);
     }	
 });
 
@@ -127,9 +125,6 @@ function showDiv(pageId, show_buttons)
     if (!show_buttons) {
 	$(buttonGroupId).hide(); 
     }
-
-    // Test Code
-    //$('#page2-weight-settings-buttons').hide();
 }
 
 

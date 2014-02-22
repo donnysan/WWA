@@ -1,737 +1,377 @@
 <!doctype html>
  
 <html>
-    <head>
-        <meta charset="utf-8">     
-        <title>Settings</title>
+<head>
+	<meta charset="utf-8">     
+	<title>Settings</title>
 
-        <link rel="stylesheet" href="./css/jquery.mobile-1.3.2.min.css">
+	<link rel="stylesheet" href="./css/jquery.mobile-1.3.2.min.css">
 	<link rel="stylesheet" href="./Plugins/Zebra-Datepicker/examples/public/css/style.css" type="text/css">
- 
-        <link rel="stylesheet" href="./Plugins/Zebra-Datepicker/public/css/default.css" type="text/css"> 
-        <link rel="stylesheet" href="./Plugins/Zebra_Dialog-1.3.8/public/css/default/zebra_dialog.css" type="text/css" />
-	<link rel="stylesheet" href="./css/wizard.css" type="text/css" />
-	
-<link href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" rel="stylesheet">
-    </head>
-    <body>
- 
-        <!-- Wizard Control -->
-	<!-- <div data-role="dialog" id="wizard-page"> -->
-        <div data-role="page" id="wizard-page">
-            <div data-role="header" data-theme="b">
-                <h2>Setup Wizard</h2>
-            </div>
-
-            <!-- Unit settings -->
-            <div data-role="content" id="page1-unit-settings">
-                <h3>Unit settings</h3>
-		<hr>
-	        <div>
-                    
-		    <table cellpadding="0" cellspacing="0">
-                        
-			<col style="width:44px;" />
-                        
-			<col style="width:auto;" />
-                        
-			<tr>
-                                                    
-			    <td>
-                                
-				<div>
-                                                                     
-				    <a href="javascript:void(0)" id="units-help"><img class="info_image" src="./img/information.jpg"
-/></a>
-                                
-				</div>
-                            
-			    </td>
-                                                      
-			    <td>
-                                                                                   
-				<div class="mobile_label">
-                                        
-				    Unit System
-                                    
-				</div>
-                                                                    
-				<div data-role="fieldcontain">
-                                        
-				    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right"
- data-native-menu="false">
-                                            
-					<option value="0" selected="selected">
-- Select -
-</option>
-                                            
-					<option value="1">
- Standard (U.S.)
- </option>
-                                            
-					<option value="2">
-Metric
-</option>
-                                        
-				    </select>
-                                    
-				</div>
-                                	                           
-			    </td>
-                        
-			</tr>
-   
-			<tr>
-			    <td>
-				<div>
-                                                                     
-				    <a href="javascript:void(0)" id="points-system-help"><img class="info_image" src="./img/information.jpg"
-/>
-</a>                                
-				</div>
- 
-			    </td>
-			    <td>
-				<div class="mobile_label">
-                                        
-				    Points System                                    
-				</div>
- 
-				<div data-role="fieldcontain">
-                                        
-				    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right"
- data-native-menu="false">
-                                            
-					<option value="0" selected="selected">
-- Select -
-</option>
-                                            
-					<option value="1">
-Plus System
-</option>
-                                            
-					<option value="2">
-Classic System</option>
-                                        
-				    </select>
-                                    
-				</div>
-  
-			    </td>
-			</tr>    
-			<tr>
-			    <td>
-				<div>
-                                                                     
-				    <a href="javascript:void(0)" id="points-precision-help"><img class="info_image" src="./img/information.jpg"
-/>
-</a>                                
-				</div>
- 
-			    </td>
-			    <td>
-				<div class="mobile_label">
-                                        
-				    Points Precision
-                                    
-				</div>
- 
-				<div data-role="fieldcontain">
-                                        
-				    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right"
- data-native-menu="false">
-                                            
-					<option value="0" selected="selected">
-- Select -
-</option>
-                                            
-					<option value="1">Whole Point</option>
-                                            
-					<option value="2">
-Half Point (0.5)</option>
-    
-					<option value="3">
-Tenth Point (0.1)</option>
-                                     
-				    </select>
-                                    
-				</div>
-  
-			    </td>
-			</tr>                              
-		    </table>
-                
+	<link rel="stylesheet" href="./Plugins/Zebra-Datepicker/public/css/default.css" type="text/css"> 
+	<link rel="stylesheet" href="./Plugins/Zebra_Dialog-1.3.8/public/css/default/zebra_dialog.css" type="text/css" />
+	<link rel="stylesheet" href="./css/wizard.css" type="text/css" />	
+	<link href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" rel="stylesheet">
+</head>
+<body>
+	<!-- Wizard Control -->
+	<div data-role="page" id="wizard-page">
+		<div data-role="header" data-theme="b">
+			<h2>Setup Wizard</h2>
+			<a href="#home" data-icon="home" data-iconpos="right" data-inline="true" data-role="button" class="ui-btn-left">Home</a> 
 		</div>
+		
+		<!-- Unit settings -->
+		<div data-role="content" id="page1-unit-settings">
+			<h3>Unit settings</h3>
+			<hr>
 
-		<br>
-		<hr>
-	 	<div data-role="controlgroup" data-type="horizontal" id="page1-unit-settings-buttons">
-		    <a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
-		    <a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
-	        </div>           
-	    </div>
-     		
+			<div>                  
+				<table cellpadding="0" cellspacing="0">					
+					<col style="width:44px;" />					
+					<col style="width:auto;" />					
+					<tr>												
+						<td>							
+							<div>																 
+								<a href="javascript:void(0)" id="units-help"><img class="info_image" src="./img/information.jpg" /></a>							
+							</div>                          
+						</td>                                                     
+						<td>                                                                                 
+							<div class="mobile_label">                                       
+								Unit System                                   
+							</div>                                                                  
+							<div data-role="fieldcontain">                                     
+								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" data-native-menu="false">                                           
+									<option value="0" selected="selected">- Select -</option>                                          
+									<option value="1">Standard (U.S.)</option>                                          
+									<option value="2">Metric</option>                                       
+								</select>											
+							</div>																	   
+						</td>									
+					</tr>   
+					<tr>
+						<td>
+						    <div>																		 
+								<a href="javascript:void(0)" id="points-system-help"><img class="info_image" src="./img/information.jpg" /> </a>                                
+						    </div>	 
+						</td>
+						<td>
+							<div class="mobile_label">										
+								Points System                                    
+							</div>
+			 				<div data-role="fieldcontain">
+							    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" data-native-menu="false">												
+									<option value="0" selected="selected">- Select -</option>													
+									<option value="1">Plus System</option>													
+									<option value="2">Classic System</option>												
+								</select>										
+							</div>		  
+						</td>
+					</tr>    
+					<tr>
+						<td>
+							<div>																		 
+								<a href="javascript:void(0)" id="points-precision-help"><img class="info_image" src="./img/information.jpg"	/> </a>                                
+							</div>		 
+						</td>
+						<td>
+							<div class="mobile_label">Points Precision</div>		 
+							<div data-role="fieldcontain">												
+								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" data-native-menu="false">													
+									<option value="0" selected="selected">- Select -</option>													
+									<option value="1">Whole Point</option>											
+									<option value="2">Half Point (0.5)</option>
+									<option value="3">Tenth Point (0.1)</option>											 
+								</select>											
+						    </div>		  
+						</td>
+					</tr>                              
+				</table>               
+			</div>
+			<br>
+			<hr>
 
-            <!-- Weight Settings -->
-            <div data-role="content" id="page2-weight-settings">
-                <h3>Weight Settings</h3>
-		<hr>
-    		    <div data-role="fieldcontain" data-controltype="textinput">
-              
-			<label for="current-weight">Enter your current weight (lb/kg):</label>     
-			<div style="width: 75px">     
-			    <input type="text" id="current-weight" max="999">  
-			</div>     
-    		    </div>
-          
-   		    <div data-role="fieldcontain" data-controltype="textinput">
-              
-			<label for="goal-weight">Enter your weight goal (lb/kg):</label>
- 
-			<div style="width: 75px">             
-			    <input type="text" name="goal-weight" id="goal-weight" max="999">
-			</div>      
-    		    </div>
-          
-    		    <div data-role="fieldcontain" data-controltype="dateinput">
-              
+			<div data-role="controlgroup" data-type="horizontal" id="page1-unit-settings-buttons">
+				<a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
+				<a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
+			</div>           
+		</div>
+     
+		<!-- Weight Settings -->
+		<div data-role="content" id="page2-weight-settings">
+			<h3>Weight Settings</h3>
+			<hr>
+
+			<div data-role="fieldcontain" data-controltype="textinput">            
+				<label for="current-weight">Enter your current weight (lb/kg):</label>     
+				<div style="width: 75px">     
+					<input type="text" id="current-weight" max="999">  
+				</div>     
+    		</div>         
+   		    <div data-role="fieldcontain" data-controltype="textinput">             
+				<label for="goal-weight">Enter your weight goal (lb/kg):</label>
+				<div style="width: 75px">             
+					<input type="text" name="goal-weight" id="goal-weight" max="999">
+				</div>      
+			</div>         
+    		<div data-role="fieldcontain" data-controltype="dateinput">              
        			<label for="test-datepicker">Enter your goal date:</label>
 		        <div style="width: 200px"">
-                    	    <input id="test-datepicker" type="text">
-                	</div>
-    		    </div>
- 
+				   <input id="test-datepicker" type="text">
+                </div>
+    		</div>
+
 	        <div data-role="controlgroup" data-type="horizontal" id="page2-weight-settings-buttons">
 		    <a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
 		    <a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
 	        </div>
-            </div>
+        </div>
  
 	    <!-- Points Allowance Settings -->
-            <div data-role="content" id="page3-points-allowance-settings">
-                <h3>Daily Points Allowance Settings</h3>
-		<hr>	
-		    <table cellpadding="0" cellspacing="0">
-                        
-			<col style="width:44px;" />
-                        
-			<col style="width:auto;" />
-                        
-			<tr>
-                                                    
-			    <td>
-                                
-				<div>
-                                                                     
-				    <a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image" src="./img/information.jpg"
-/></a>
-                                
-				</div>
-                            
-			    </td>
-                                                      
-			    <td>
-                                                                                   
-				<div class="mobile_label">
-                                        
-				    How do you want to determine your Daily Point Allowance?                                   
-				</div>
-                                                                    
-				<div data-role="fieldcontain">
-                                        
-				    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right"
- data-native-menu="false">
-                                            
-					<option value="0" selected="selected">
-- Select -
-</option>
-                                            
-					<option value="1">
-Used a fixed value
-</option>
-                                            
-					<option value="2">Calculate the Value</option>
-                                        
-				    </select>
-                                    
-				</div>
-                                	                           
-			    </td>
-                        
-			</tr>
- 
-		    </table> 
+        <div data-role="content" id="page3-points-allowance-settings">
+			<h3>Daily Points Allowance Settings</h3>
+			<hr>	
+			
+			<div>                  
+				<table cellpadding="0" cellspacing="0">					
+					<col style="width:44px;" />					
+					<col style="width:auto;" />					
+					<tr>												
+						<td>							
+							<div>																 
+								<a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image" src="./img/information.jpg" /></a>							
+							</div>                          
+						</td>                                                     
+						<td>                                                                                 
+							<div class="mobile_label">                                       
+								How do you want to determine your Daily Point Allowance?                                    
+							</div>                                                                  
+							<div data-role="fieldcontain">                                       
+								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="selDPA" data-native-menu="false">                                          
+									<option value="0" selected="selected"> - Select - </option>                                          
+									<option value="1"> Used a fixed value </option>                                          
+									<option value="2">Calculate the Value (Plus System)</option>       
+									<option value="3">Calculate the Value (Classic System)</option>    
+								</select>                                  
+							</div>  																   
+						</td>									                            
+				</table>               
+			</div>
 	
-	        <div id="dpa-fixed">
-                    
-		    <table cellpadding="0" cellspacing="0">
-                        
-			<col style="width:100px;" />
-    
-			<tr>                                                                                                                             
-			    <td>
-      
-				<label for="txtUserSpecifiedDPA">Enter a Value</label>
-                                                                              
-                	        <input type="text" id="txtUserSpecifiedDPA" />                      
-			    </td>
-   
-			</tr>
-    
-		    </table>  
-		</div>
-		<div id="dpa-calculated"> 
-		    <table cellpadding="0" cellspacing="0">
-                        
-			<col style="width:100px;" />
-    			
-			<tr>                                                                                                                             
-			    <td>
-     
-				<label for="txtCalculatedDPA">Calculate the Value</label>
-                                                                              
-                	        <input type="text" id="txtCalculatedDPA"  disabled/>                       
-			    </td>
-                        
-			</tr>
-    
-		    </table>                                
-		</div>
+	        <div id="dpa-fixed" style="display: none;">                
+				<table cellpadding="0" cellspacing="0">                      
+					<col style="width:100px;" />  
+					<tr>                                                                                                                             
+						<td>    
+						<label for="txtUserSpecifiedDPA">Enter a Value</label>                                                                     
+							<input type="text" id="txtUserSpecifiedDPA" />                      
+						</td>
+					</tr>
+				</table>  
+			</div>
+		
+			<div id="dpa-calculated" style="display: none;"> 
+				<table cellpadding="0" cellspacing="0">                       
+					<col style="width:100px;" />   			
+					<tr>                                                                                                                             
+						<td>
+							<label for="txtCalculatedDPA">Your calculated value is:</label>                                                             
+							<input type="text" id="txtCalculatedDPA"  disabled/>                       
+						</td>                     
+					</tr>    
+				</table>                                
+			</div>
+	       
+			<div id="plus-pa-settings" style="display: none;">
 
+				<hr style="height:1px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;"/>         
+				<div data-controltype="textblock">
+					<h3><b>Enter Calculation Values  - Plus System</b></h3>
+				</div>
+				<div data-role="fieldcontain" data-controltype="selectmenu">             
+					<label for="selectmenu7">Your Gender</label>            
+					<select id="selectmenu7" name="">                  
+						<option value="0">Male</option>             
+						<option value="1">Female</option>             
+					</select>      
+				</div>          
+				<div data-role="fieldcontain" data-controltype="selectmenu">             
+					<label for="selectmenu8">Breastfeeding?</label>           
+					<select id="selectmenu8" name="">                  
+						<option value="0">Not Breastfeeding</option>                 
+						<option value="1">Breastfeeding Part-Time</option>                
+						<option value="2">Breastfeeding Full-Time</option>            
+					</select>       
+				</div>      
+ 
+				<div class="ui-grid-a">             
+					<div class="ui-block-a">					  
+						<div data-role="fieldcontain" data-controltype="textinput">						  
+							<label for="txt-plus-age">Your Age (years)</label>						  
+							<input id="txt-plus-age" type="text" max="999"/>					  
+						</div>         
+					</div>            
+					<div class="ui-block-b">                 
+						<div data-role="fieldcontain" data-controltype="textinput">                   
+							<label for="txt-plus-weight">Your Weight (lb)</label>                     
+							<input id="txt-plus-weight" type="text" max="999"/>                 
+						</div>             
+					</div>         
+				</div> 
+				
+				<div class="ui-grid-a">           
+					<div class="ui-block-a">                
+						<div data-role="fieldcontain" data-controltype="selectmenu">                     
+							<label for="selectmenu3">Your height (ft / m)</label>                     
+							<select id="selectmenu3" name="">
+								<option>- Select -</option>                         
+								<option value="1">1</option>                     
+								<option value="2">2</option>                         
+								<option value="3">3</option>                         
+								<option value="4">4</option>                        
+								<option value="5">5</option>                          
+								<option value="6">6</option>                        
+								<option value="7">7</option>                         
+								<option value="8">8</option>                         
+								<option value="9">9</option>                    
+							</select>                
+						</div>           
+					</div>            
+					<div class="ui-block-b">                 
+						<div data-role="fieldcontain" data-controltype="selectmenu">                    
+							<label for="selectmenu5">Your height (in / m)</label>                     
+								<select id="selectmenu5" name=""> 
+									<option>- Select -</option>                        
+									<option value="1">1</option>                         
+									<option value="1">1</option>                     
+									<option value="2">2</option>                         
+									<option value="3">3</option>                         
+									<option value="4">4</option>                        
+									<option value="5">5</option>                          
+									<option value="6">6</option>                        
+									<option value="7">7</option>                         
+									<option value="8">8</option>                         
+									<option value="9">9</option>                             
+									<option value="10">10</option>                         
+									<option value="11">11</option>                       
+								</select>               
+						</div>            
+					</div>        
+				</div>
 
-	         
-		<div id="plus-pa-settings"><!-- Plus System -->
-		    <hr style="height:1px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;"/>
-          
-		    <div data-controltype="textblock">
-<h3><b>Enter Calculation Values  - Plus System</b>
-</h3>
-</div>
-          
-
-		    <div data-role="fieldcontain" data-controltype="selectmenu">
-              
-	    		<label for="selectmenu7">
-                  Your Gender
-              </label>
-              
-	    		<select id="selectmenu7" name="">
-                  
-			    <option value="0">
-                      Male
-                  </option>
-                  
-			    <option value="1">
-                      Female
-                  </option>
-              
-	    		</select>
-          
-		    </div>
-          
-		    <div data-role="fieldcontain" data-controltype="selectmenu">
-              
-	    		<label for="selectmenu8">
-                  Breastfeeding?
-              </label>
-              
-	    		<select id="selectmenu8" name="">
-                  
-			    <option value="0">
-                      Not Breastfeeding
-                  </option>
-                  
-			    <option value="1">
-                      Breastfeeding Part-Time
-                  </option>
-                  
-			    <option value="2">
-                      Breastfeeding Full-Time
-                  </option>
-              
-	    		</select>
-          
-		    </div>
-          
-		    <div class="ui-grid-a">
-              
-	    		<div class="ui-block-a">
-                  
-			    <div data-role="fieldcontain" data-controltype="textinput">
-                      
-		    		<label for="textinput1">
-                          Your Age (years)
-                      </label>
-                      
-		    		<input name="" id="textinput1" placeholder="" value="" type="text"/>
-                  
-			    </div>
-              
-	    		</div>
-              
-	    		<div class="ui-block-b">
-                  
-			    <div data-role="fieldcontain" data-controltype="textinput">
-                      
-		    		<label for="textinput2">
-                          Your Weight (lb)
-                      </label>
-                      
-		    		<input name="" id="textinput2" placeholder="" value="" type="text"/>
-                  
-			    </div>
-              
-	    		</div>
-          
-		    </div>
-      
-		    <div class="ui-grid-a">
-              
-	    		<div class="ui-block-a">
-                  
-			    <div data-role="fieldcontain" data-controltype="selectmenu">
-                      
-		    		<label for="selectmenu3">
-                          Your height (ft / m)
-                      </label>
-                      
-		    		<select id="selectmenu3" name="">
+            </div> 
   
-				    <option>- Select -</option>                         
-				    <option value="1">
-                              1
-                          </option>
-                          
-				    <option value="2">
-                              2
-                          </option>
-                          
-				    <option value="3">
-                              3
-                          </option>
-                          
-				    <option value="4">
-                              4
-                          </option>
-                          
-				    <option value="5">
-                              5
-                          </option>
-                          
-				    <option value="6">
-                              6
-                          </option>
-                          
-				    <option value="7">
-                              7
-                          </option>
-                          
-				    <option value="8">
-                              8
-                          </option>
-                          
-				    <option value="9">
-                              9
-                          </option>
-                          
-				    <option value="value">
-                          Option
-                     </option>
-                      
-		    		</select>
-                  
-			    </div>
-              
-	    		</div>
-              
-			<div class="ui-block-b">
-                  
-	    		    <div data-role="fieldcontain" data-controltype="selectmenu">
-                      
-				<label for="selectmenu5">
-                          Your height (in / m)
-                      </label>
-                      
-				<select id="selectmenu5" name="">
-   
-				    <option>- Select -</option>                        
-		    		    <option value="1">
-                              1
-                          </option>
-                          
-		    		    <option value="2">
-                              2
-                          </option>
-                          
-		    		    <option value="3">
-                              3
-                          </option>
-                          
-		    		    <option value="4">
-                              4
-                          </option>
-                          
-		    		    <option value="5">
-                              5
-                          </option>
-                          
-		    		    <option value="6">
-                              6
-                          </option>
-                          
-		    		    <option value="7">
-                              7
-                          </option>
-                          
-		    		    <option value="8">
-                              8
-                          </option>
-                          
-		    		    <option value="9">
-                              9
-                          </option>
-                          
-		    		    <option value="10">
-                             10
-                         </option>
-                          
-		    		    <option value="11">
-                             11
-                         </option>
-                      
-				</select>
-                  
-	    		    </div>
-              
-			</div>
-          
-		    </div><!-- /grid-a -->
-                </div> <!-- /Plus System -->
-  
-		<div> <!-- Classic System -->   
-    		    <div data-controltype="textblock">
-              
-        		<h3>
-                  <b>
-                      Enter Calculation Values - Classic System                  </b>
-              </h3>
-          
-    		    </div>
-      
-    		    <div data-role="fieldcontain" data-controltype="selectmenu">
-              
-			<label for="selectmenu9">
-                  Your Gender
-              </label>
-              
-			<select id="selectmenu9" name="">
-                  
-	    		    <option value="">
-                      - Select -
-                  </option>
-                  
-	    		    <option value="0">
-                      Male
-                  </option>
-                  
-	    		    <option value="1">
-                      Female
-                  </option>
-                  
-	    		    <option value="value">
-                      Option
-                  </option>
-              
-			</select>
-          
-    		    </div>
-          
-    		    <div class="ui-grid-a">
-              
-			<div class="ui-block-a">
-                  
-	    		    <div data-role="fieldcontain" data-controltype="textinput">
-                      
-				<label for="textinput6">
-                          Your Age (years)
-                      </label>
-                      
-				<input name="" id="textinput6" placeholder="" value="" type="text"/>
-                  
-	    		    </div>
-              
-			</div>
-              
-			<div class="ui-block-b">
-                  
-	    		    <div data-role="fieldcontain" data-controltype="textinput">
-                      
-				<label for="textinput7">
-                          Your Weight (lb)
-                      </label>
-                      
-				<input name="" id="textinput7" placeholder="" value="" type="text"/>
-                  
-	    		    </div>
-              
-			</div>
-          
-    		    </div>
-          
-    		    <div data-role="fieldcontain" data-controltype="selectmenu">
-              
-			<label for="selectmenu11">
-                  Your height
-              </label>
-              
-			<select id="selectmenu11" name="">
-                  
-	    		    <option value="">
-                      - Select -
-                  </option>
-                  
-	    		    <option value="option1">
-                      Under 5'1&#34; / 1.55m
-                  </option>
-                  
-	    		    <option value="option2">
-                      5'1&#34; to 5&#34;10&#34; / 1.55m to 1.78m
-                  </option>
-                  
-	    		    <option value="option3">
-                      Over 5'10&#34; / 1.78m
-                  </option>
-              
-        		</select>
-          
-    		    </div>
-          
-    		    <div data-role="fieldcontain" data-controltype="selectmenu">
-             
-	 	        <label for="selectmenu12">
-                  Your Daily Routine
-              </label>
-              
-	 	        <select id="selectmenu12" name="">
-                  
-	    		    <option value="">
-                      - Select -
-                  </option>
-                  
-	    		    <option value="0">
-                      Mostly Sitting
-                  </option>
-                  
-	    		    <option value="1">
-                      Occassionally Sitting
-                  </option>
-                  
-	    		    <option value="0">
-                      Mostly Walking
-                  </option>
-                  
-	    		    <option value="3">
-                      Mostly Hard Physical Work
-                  </option>
-              
-         	        </select>
-          
-    		    </div>
-    
-	        </div> <!-- /Classic System -->
+			<div id="classic-pa-settings" style="display: none;">   
+    		    <div data-controltype="textblock">             
+					<h3><b>Enter Calculation Values - Classic System</b></h3>         
+    		    </div>     
+
+    		    <div data-role="fieldcontain" data-controltype="selectmenu">             
+					<label for="selectmenu9">Your Gender</label>              
+					<select id="selectmenu9" name="">               
+						<option value="">- Select -</option>               
+						<option value="0">Male</option>                 
+						<option value="1">Female</option>                             
+					</select>       
+    		    </div>  
+			
+    		    <div class="ui-grid-a">           
+					<div class="ui-block-a">                 
+						<div data-role="fieldcontain" data-controltype="textinput">                    
+							<label for="txt-classic-age">Your Age</label>                     
+							<input id="txt-classic-age" type="text" max="999"/>               
+						</div>            
+					</div>            
+					<div class="ui-block-b">                
+						<div data-role="fieldcontain" data-controltype="textinput">                      
+							<label for="txt-classic-weight">Your Weight (lb)</label>                     
+							<input id="txt-classic-weight" type="text" max="999"/>                 
+						</div>           
+					</div>         
+    		    </div>   
+				
+    		    <div data-role="fieldcontain" data-controltype="selectmenu">             
+					<label for="selectmenu11">Your height</label>             
+					<select id="selectmenu11" name="">                  
+						<option value="">- Select -</option>                
+						<option value="option1">Under 5'1&#34; / 1.55m</option>                
+						<option value="option2">5'1&#34; to 5&#34;10&#34; / 1.55m to 1.78m</option>                 
+						<option value="option3">Over 5'10&#34; / 1.78m</option>              
+					</select>       
+    		    </div>         
+    		    <div data-role="fieldcontain" data-controltype="selectmenu">            
+					<label for="selectmenu12">Your Daily Routine</label>             
+					<select id="selectmenu12" name="">                 
+						<option value="">- Select -</option>                  
+						<option value="0">Mostly Sitting</option>                  
+						<option value="1">Occasionally Sitting</option>                
+						<option value="0">Mostly Walking</option>                
+						<option value="3">Mostly Hard Physical Work</option>              
+         	        </select>         
+    		    </div>  
+	        </div> 
+		
 	        <div data-role="controlgroup" data-type="horizontal" id="page3-points-allowance-settings-buttons">
-		    <a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
-		    <a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
+				<a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
+				<a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
 	        </div>
-
 	    </div> <!-- /Points Allowance Settings -->
+		
 	    <!-- Activity Settings -->
-            <div data-role="content" id="page4-actvity-settings">
-                <h3>Activity Settings</h3>
-		<hr>
-		<div id="plus-pa-settings">
-		    <div data-role="fieldcontain" data-controltype="selectmenu">
-              
-	    		<label for="selectmenu17">
-                  Accumulation Frequency
-              </label>
-              
-	    		<select id="selectmenu17" name="">
-    
-			    <option>- Select -</option>              
-			    <option value="0">
-Daily</option>
-                  
-		            <option value="1">
-Weekly
-</option>
-              
-	    		</select>
-          
-		    </div>
-          
-		    <div data-role="fieldcontain" data-controltype="selectmenu">
-              
-	    		<label for="selectmenu18">
-                  Precision
-              </label>
-              
-	    		<select id="selectmenu18" name="">
-     
-			    <option>- Select -</option>             
-			    <option value="0">
-                      Round to nearest whole number
-                  </option>
-                  
-			    <option value="1">
-                      Round to nearest half number
-                  </option>
-              
-	    		</select>
-          
-		    </div>
-          
-		    <div data-role="fieldcontain" data-controltype="selectmenu">
-              
-	    		<label for="selectmenu19">
-                  Calculate By
-              </label>
-              
-	    		<select id="selectmenu19" name="">
-   
-			    <option>- Select -</option>               
-			    <option value="0">
-                      Activity Intensity
-                  </option>
-                  
-			    <option value="1">
-                      Calories
-                  </option>
-              
-	    		</select>
-          
-		    </div>
-  
+		<div data-role="content" id="page4-actvity-settings">
+			<h3>Activity Settings</h3>
+			<hr>
+			<div>
+				<div data-role="fieldcontain" data-controltype="selectmenu">    
+					<label for="selectmenu17">Accumulation Frequency</label>           
+					<select id="selectmenu17" name="">    
+						<option>- Select -</option>              
+						<option value="0">Daily</option>             
+						<option value="1">Weekly</option>             
+					</select>         
+				</div>        
+				<div data-role="fieldcontain" data-controltype="selectmenu">             
+					<label for="selectmenu18">Precision</label>             
+					<select id="selectmenu18" name="">     
+						<option>- Select -</option>             
+						<option value="0">Round to nearest whole number</option>                
+						<option value="1">Round to nearest half number</option>              
+					</select>         
+				</div>        
+				<div data-role="fieldcontain" data-controltype="selectmenu">             
+					<label for="selectmenu19">Calculate By</label>             
+					<select id="selectmenu19" name="">   
+						<option>- Select -</option>               
+						<option value="0">Activity Intensity</option>                
+						<option value="1">Calories</option>              
+					</select>         
+				</div>
+			</div>
+			<div data-role="controlgroup" data-type="horizontal" id="page4-actvity-settings-buttons">
+				<a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
+				<a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
+			</div>
 		</div>
-	        <div data-role="controlgroup" data-type="horizontal" id="page4-actvity-settings-buttons">
-		    <a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
-		    <a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
-	        </div>
-            </div>
-        </div> 
+	</div> 
 
-        <script src="./js/jquery-1.11.0.min.js"></script>	
-        <script src="./js/jquery.mobile-1.3.2.min.js"></script>  
-        <script type="text/javascript" src="./js/zebra_dialog.js"></script>
-        <script type="text/javascript" src="./js/zebra_datepicker.js"></script> 
-        <script type="text/javascript" src="./js/wizard.js"></script>
-        <script type="text/javascript" src="./js/help.js"></script>      
-        <script type="text/javascript" src="./js/KeyFilters.js"></script>   
-    	
-<script src="./Plugins/jQuery Keypad 2.0.0/jquery.plugin.js"></script>
-    
+	<script src="./js/jquery-1.11.0.min.js"></script>	
+	<script src="./js/jquery.mobile-1.3.2.min.js"></script>  
+	<script type="text/javascript" src="./js/zebra_dialog.js"></script>
+	<script type="text/javascript" src="./js/zebra_datepicker.js"></script> 
+	<script type="text/javascript" src="./js/wizard.js"></script>
+	<script type="text/javascript" src="./js/help.js"></script>      
+	<script type="text/javascript" src="./js/KeyFilters.js"></script>   
+	<script>
+		$("#selDPA").bind('change', function(event, ui) {
+			$('#dpa-fixed, #dpa-calculated, #plus-pa-settings, #classic-pa-settings').hide();
+			var selectedIndex = $(this).val();
+			if (selectedIndex == 1) $('#dpa-fixed').show();
+			else if (selectedIndex == 2) $('#dpa-calculated, #plus-pa-settings').show();
+			else if (selectedIndex == 3) $('#dpa-calculated, #classic-pa-settings').show();
+			
+			//alert($(this).val());
+		});			
+	</script>
+	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.plugin.js"></script>   
 	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.js"></script>
-    </script>
-
-    </body>
+</body>
 </html>	
