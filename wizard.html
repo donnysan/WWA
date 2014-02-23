@@ -10,21 +10,19 @@
 	<link rel="stylesheet" href="./Plugins/Zebra-Datepicker/public/css/default.css" type="text/css"> 
 	<link rel="stylesheet" href="./Plugins/Zebra_Dialog-1.3.8/public/css/default/zebra_dialog.css" type="text/css" />
 	<link rel="stylesheet" href="./css/wizard.css" type="text/css" />	
-	<link href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" rel="stylesheet">
+	<link href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" rel="stylesheet">	
+	<link href="./Plugins/Touch Friendly Input Spinner/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
 	<!-- Wizard Control -->
 	<div data-role="page" id="wizard-page">
 		<div data-role="header" data-theme="b">
-			<h2>Setup Wizard</h2>
-			<a href="index.html" data-icon="home" data-iconpos="right" data-inline="true" data-role="button" class="ui-btn-left">Home</a> 
+			<h1 id="wizard-header" ></h1>
+			<a href="index.html" id="wizard-back-button" data-icon="home" data-iconpos="right" data-inline="true" data-role="button" class="ui-btn-left">Home</a> 
 		</div>
 		
 		<!-- Unit settings -->
-		<div data-role="content" id="page1-unit-settings">
-			<h3>Unit settings</h3>
-			<hr>
-
+		<div data-role="content" id="page1-unit-settings">	
 			<div>                  
 				<table cellpadding="0" cellspacing="0">					
 					<col style="width:44px;" />					
@@ -98,9 +96,6 @@
      
 		<!-- Weight Settings -->
 		<div data-role="content" id="page2-weight-settings">
-			<h3>Weight Settings</h3>
-			<hr>
-
 			<div data-role="fieldcontain" data-controltype="textinput">            
 				<label for="current-weight">Enter your current weight (lb/kg):</label>     
 				<div style="width: 75px">     
@@ -127,10 +122,7 @@
         </div>
  
 	    <!-- Points Allowance Settings -->
-        <div data-role="content" id="page3-points-allowance-settings">
-			<h3>Daily Points Allowance Settings</h3>
-			<hr>	
-			
+        <div data-role="content" id="page3-points-allowance-settings">	
 			<div>                  
 				<table cellpadding="0" cellspacing="0">					
 					<col style="width:44px;" />					
@@ -188,18 +180,20 @@
 					<h3><b>Enter Calculation Values  - Plus System</b></h3>
 				</div>
 				<div data-role="fieldcontain" data-controltype="selectmenu">             
-					<label for="selectmenu7">Your Gender</label>            
-					<select id="selectmenu7" name="">                  
-						<option value="0">Male</option>             
-						<option value="1">Female</option>             
+					<label for="select-gender">Your Gender</label>            
+					<select id="select-gender" name="">   
+						<option value="0" selected="selected"> - Select - </option>  
+						<option value="1">Male</option>             
+						<option value="2">Female</option>             
 					</select>      
 				</div>          
-				<div data-role="fieldcontain" data-controltype="selectmenu">             
-					<label for="selectmenu8">Breastfeeding?</label>           
-					<select id="selectmenu8" name="">                  
-						<option value="0">Not Breastfeeding</option>                 
-						<option value="1">Breastfeeding Part-Time</option>                
-						<option value="2">Breastfeeding Full-Time</option>            
+				<div data-role="fieldcontain" id="div-breastfeeding" data-controltype="selectmenu" style="display: none;">             
+					<label for="select-breastfeeding">Breastfeeding?</label>           
+					<select id="select-breastfeeding">    
+						<option value="0" selected="selected"> - Select - </option>  
+						<option value="1">Not Breastfeeding</option>                 
+						<option value="2">Breastfeeding Part-Time</option>                
+						<option value="3">Breastfeeding Full-Time</option>            
 					</select>       
 				</div>      
  
@@ -220,44 +214,18 @@
 				
 				<div class="ui-grid-a">           
 					<div class="ui-block-a">                
-						<div data-role="fieldcontain" data-controltype="selectmenu">                     
-							<label for="selectmenu3">Your height (ft / m)</label>                     
-							<select id="selectmenu3" name="">
-								<option>- Select -</option>                         
-								<option value="1">1</option>                     
-								<option value="2">2</option>                         
-								<option value="3">3</option>                         
-								<option value="4">4</option>                        
-								<option value="5">5</option>                          
-								<option value="6">6</option>                        
-								<option value="7">7</option>                         
-								<option value="8">8</option>                         
-								<option value="9">9</option>                    
-							</select>                
+						<div data-role="fieldcontain" data-controltype="textinput">                     
+							<label for="user-height-feet">Your height (ft / m)</label>                     
+							<input id="user-height-feet" type="text" value="" name="user-height-feet">               
 						</div>           
 					</div>            
-					<div class="ui-block-b">                 
-						<div data-role="fieldcontain" data-controltype="selectmenu">                    
-							<label for="selectmenu5">Your height (in / m)</label>                     
-								<select id="selectmenu5" name=""> 
-									<option>- Select -</option>                        
-									<option value="1">1</option>                         
-									<option value="1">1</option>                     
-									<option value="2">2</option>                         
-									<option value="3">3</option>                         
-									<option value="4">4</option>                        
-									<option value="5">5</option>                          
-									<option value="6">6</option>                        
-									<option value="7">7</option>                         
-									<option value="8">8</option>                         
-									<option value="9">9</option>                             
-									<option value="10">10</option>                         
-									<option value="11">11</option>                       
-								</select>               
-						</div>            
+					<div class="ui-block-b">   
+						<div data-role="fieldcontain" data-controltype="textinput">  
+							<label for="user-height-inches">Your height (in / m)</label>                     
+							<input id="user-height-inches" type="text" value="" name="user-height-inches">   
+						</div> 
 					</div>        
 				</div>
-
             </div> 
   
 			<div id="classic-pa-settings" style="display: none;">   
@@ -318,33 +286,29 @@
 		
 	    <!-- Activity Settings -->
 		<div data-role="content" id="page4-actvity-settings">
-			<h3>Activity Settings</h3>
-			<hr>
-			<div>
-				<div data-role="fieldcontain" data-controltype="selectmenu">    
-					<label for="selectmenu17">Accumulation Frequency</label>           
-					<select id="selectmenu17" name="">    
-						<option>- Select -</option>              
-						<option value="0">Daily</option>             
-						<option value="1">Weekly</option>             
-					</select>         
-				</div>        
-				<div data-role="fieldcontain" data-controltype="selectmenu">             
-					<label for="selectmenu18">Precision</label>             
-					<select id="selectmenu18" name="">     
-						<option>- Select -</option>             
-						<option value="0">Round to nearest whole number</option>                
-						<option value="1">Round to nearest half number</option>              
-					</select>         
-				</div>        
-				<div data-role="fieldcontain" data-controltype="selectmenu">             
-					<label for="selectmenu19">Calculate By</label>             
-					<select id="selectmenu19" name="">   
-						<option>- Select -</option>               
-						<option value="0">Activity Intensity</option>                
-						<option value="1">Calories</option>              
-					</select>         
-				</div>
+			<div data-role="fieldcontain" data-controltype="selectmenu">    
+				<label for="selectmenu17">Accumulation Frequency</label>           
+				<select id="selectmenu17" name="">    
+					<option>- Select -</option>              
+					<option value="0">Daily</option>             
+					<option value="1">Weekly</option>             
+				</select>         
+			</div>        
+			<div data-role="fieldcontain" data-controltype="selectmenu">             
+				<label for="selectmenu18">Precision</label>             
+				<select id="selectmenu18" name="">     
+					<option>- Select -</option>             
+					<option value="0">Round to nearest whole number</option>                
+					<option value="1">Round to nearest half number</option>              
+				</select>         
+			</div>        
+			<div data-role="fieldcontain" data-controltype="selectmenu">             
+				<label for="selectmenu19">Calculate By</label>             
+				<select id="selectmenu19" name="">   
+					<option>- Select -</option>               
+					<option value="0">Activity Intensity</option>                
+					<option value="1">Calories</option>              
+				</select>         
 			</div>
 			<div data-role="controlgroup" data-type="horizontal" id="page4-actvity-settings-buttons">
 				<a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
@@ -360,18 +324,13 @@
 	<script type="text/javascript" src="./js/wizard.js"></script>
 	<script type="text/javascript" src="./js/help.js"></script>      
 	<script type="text/javascript" src="./js/KeyFilters.js"></script>   
-	<script>
-		$("#selDPA").bind('change', function(event, ui) {
-			$('#dpa-fixed, #dpa-calculated, #plus-pa-settings, #classic-pa-settings').hide();
-			var selectedIndex = $(this).val();
-			if (selectedIndex == 1) $('#dpa-fixed').show();
-			else if (selectedIndex == 2) $('#dpa-calculated, #plus-pa-settings').show();
-			else if (selectedIndex == 3) $('#dpa-calculated, #classic-pa-settings').show();
-			
-			//alert($(this).val());
-		});			
-	</script>
 	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.plugin.js"></script>   
-	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.js"></script>
+	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.js"></script>	
+	<script src="./Plugins/Touch Friendly Input Spinner/bootstrap/js/bootstrap.min.js"></script>
+	<script src="./Plugins/Touch Friendly Input Spinner/bootstrap-touchspin/bootstrap.touchspin.js"></script>
+	<script>
+		$("input[name='user-height-feet']").TouchSpin({ min: 1, max: 9 });
+		$("input[name='user-height-inches']").TouchSpin({ min: 0, max: 11 });
+	</script>		
 </body>
 </html>	
