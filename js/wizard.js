@@ -108,14 +108,13 @@ $(document).ready(function() {
 	
 	// Event handler for selecting whether daily points allowance is calculated or entered manually
 	$("#selDPA").bind('change', function(event, ui) 
-	{
+	{				
 		$('#dpa-fixed, #dpa-calculated, #plus-pa-settings, #classic-pa-settings').hide();
 		var selectedIndex = $(this).val();
+		
 		if (selectedIndex == 1) $('#dpa-fixed').show();
 		else if (selectedIndex == 2) $('#dpa-calculated, #plus-pa-settings').show();
-		else if (selectedIndex == 3) $('#dpa-calculated, #classic-pa-settings').show();
-		
-		//alert($(this).val());
+		else if (selectedIndex == 3) $('#dpa-calculated, #classic-pa-settings').show();	
 	});		
 	
 	// Event handler for selecting gender
@@ -129,13 +128,14 @@ $(document).ready(function() {
 
 $(document).on('pageshow', '#wizard-page, #home-page', function (event, ui) 
 {
-    var args = document.location.search.substring(1).split('&');	
+    var args = document.location.search.substring(1).split('&');		
+
     if (args != '') 
 	{
 		var kvp0 = args[0].split('=');
 		var id = "#" + kvp0[1];
 		var kvp1 = args[1].split('=');
-		var show_buttons = kvp1[1] == 'true';		
+		var show_buttons = kvp1[1] == 'true';	
 		showDiv(id, show_buttons);
     }
     else 
@@ -152,15 +152,12 @@ function showDiv(pageId, show_buttons)
     // Show specified div
     $(pageId).show();
 
-	// Set Header Text*-
+	// Set Header Text
 	setHeaderText(pageId, show_buttons);
-	
+			
 	// Show or Hide back button
 	if (show_buttons) $('#wizard-back-button').hide();
-	else $('#wizard-back-button').show();
-	
-    // Hide visible div buttons if specified
-    if (!show_buttons) $(buttonGroupId).hide();    
+	else $('#wizard-back-button').show();  
 }
 
 function setHeaderText(pageId, isWizard)
