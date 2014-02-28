@@ -89,7 +89,7 @@ $(document).ready(function() {
     });
  
     // Initialize numeric keypad data input for text boxes
-    $('#current-weight, #goal-weight, #txt-plus-age, #txt-plus-weight, #txt-classic-weight, #txtUserSpecifiedDPA').keypad(
+    $('#current-weight, #goal-weight, #txt-plus-age, #txt-plus-weight, #txt-classic-age, #txt-classic-weight, #txtUserSpecifiedDPA').keypad(
     {
 		prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
 		onKeypress: KeyPress,
@@ -117,21 +117,13 @@ $(document).ready(function() {
 		else if (selectedIndex == 3) $('#dpa-calculated, #classic-pa-settings').show();	
 	});		
 	
-	// Plus system event handler for selecting gender 
-	$("#select-gender-plus").bind('change', function(event, ui) 
+	// Event handler for selecting gender
+	$("#select-gender").bind('change', function(event, ui) 
 	{
 		var selectedIndex = $(this).val();
-		if (selectedIndex == 0 || selectedIndex == 1) $('#div-breastfeeding-mom-plus').hide();
-		else if (selectedIndex == 2) $('#div-breastfeeding-mom-plus').show();
+		if (selectedIndex == 1) $('#div-breastfeeding').hide();
+		else if (selectedIndex == 2) $('#div-breastfeeding').show();
 	});	
-
-	// Classic system event handler for selecting gender 
-	$("#select-gender-classic").bind('change', function(event, ui) 
-	{
-		var selectedIndex = $(this).val();
-		if (selectedIndex == 0 || selectedIndex == 1)  $('#div-breastfeeding-mom-classic').hide();
-		else if (selectedIndex == 2) $('#div-breastfeeding-mom-classic').show();
-	});
 });
 
 $(document).on('pageshow', '#wizard-page, #home-page', function (event, ui) 
