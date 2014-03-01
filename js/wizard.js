@@ -70,16 +70,6 @@ $(document).ready(function() {
 			OnKeyUp 
 		); 
     }
-
-    // DatePicker Plug-In
-    $('#test-datepicker').Zebra_DatePicker(
-    {       
-		direction: true,    // boolean true would've made the date picker future only but starting from today, rather than tomorrow
-		format: 'D, M d, Y',
-		show_clear_date: false,
-		show_select_today: false,
-		first_day_of_week: 0   
-    });
  
     // Initialize numeric keypad data input for text boxes
     $('#current-weight, #goal-weight, #txt-plus-age, #txt-plus-weight, #txt-classic-weight, #txtUserSpecifiedDPA').keypad(
