@@ -72,7 +72,7 @@ $(document).ready(function() {
     }
  
     // Initialize numeric keypad data input for text boxes
-    $('#current-weight, #goal-weight, #txt-plus-age, #txt-plus-weight, #txt-classic-weight, #txtUserSpecifiedDPA').keypad(
+    $('#current-weight, #goal-weight, #txt-plus-age, #txt-plus-weight, #txt-classic-weight, #txtUserSpecifiedDPA, #txt-height-ft, #txt-height-in').keypad(
     {
 		prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
 		onKeypress: KeyPress,
@@ -115,8 +115,118 @@ $(document).ready(function() {
 		if (selectedIndex == 0 || selectedIndex == 1)  $('#div-breastfeeding-mom-classic').hide();
 		else if (selectedIndex == 2) $('#div-breastfeeding-mom-classic').show();
 	});
+	
+	// Event handler to calculate the Daily Points Allowance for the classic system
+	$("#btn-calculate-dpa-classic").click( function()
+	{
+		if ($("#select-gender-classic").val() == 0 ||
+			$("#select-age-classic").val() == 0 ||
+			$("#txt-classic-weight").val() == '' ||
+			$("#select-height-classic").val() == 0 ||
+			$("#select-activity-level-classic").val() == 0 )
+		{
+			alert('Required fields not entered');
+			return;
+		}
+
+		if ($("#txt-classic-weight").val().length < 2)
+		{
+			alert('Weight must be at least 2 digits.');
+			return;
+		}
+
+		// Get selected gender
+		var selectedGender = 0;
+		var genderIndex = $("#select-gender-classic").find(":selected").val();	
+				
+		if (genderIndex == 1) 
+		{
+			selectedGender = GENDER_MALE;
+		}
+		else if (genderIndex == 2) 
+		{					
+			var isBreastfeeding = $("#ckBreastfeeding").prop("checked");
+
+			if (isBreastfeeding) selectedGender = GENDER_FEMALE_BREASTFEEDING;
+			else selectedGender = GENDER_FEMALE_NOT_BREASTFEEDING;
+		}
+
+		var selectedAge = $("#select-age-classic").find(":selected").val();
+		var inputWeight = parseInt( $("#txt-classic-weight").val() );
+		var selectedHeight = $("#select-height-classic").find(":selected").val(); 
+		var selectedActivityLevel = $("#select-activity-level-classic").find(":selected").val();   
+		var dpa = CalculateClassicDPA(selectedGender, selectedAge, inputWeight, selectedHeight, selectedActivityLevel);
+		
+		$('#dpa-result').text('Your daily points allowance is ' + dpa);
+	});
+
+	// Event handler to calculate the Daily Points Allowance for the plus system
+	$("#btn-calculate-dpa-plus").click( function()
+	{		
+		var selected_gender = $("#select-gender-plus").find(":selected").val();	
+		if (selected_gender == 0)
+		{
+			alert('Gender is required');
+			return;
+		}
+
+		var age = $("#txt-plus-age").val();
+		if (age == '')
+		{
+			alert('Age is required');
+			return;
+		}
+		age = parseInt(age);
+
+		var weight = $("#txt-plus-weight").val();
+		if (weight == '')
+		{
+			alert('Weight is required');
+			return;
+		}
+		//weight = parseInt(weight) * 0.45359237;
+		weight = parseInt(weight);
+
+		var feet = $("#txt-height-ft").val();
+		if (feet == 0)
+		{
+			alert('Height feet is required');
+			return;
+		}
+		feet = parseInt(feet);
+
+		var inches = $("#txt-height-in").val();
+		if (inches == -1)
+		{
+			alert('Height inches is required');
+			return;
+		}
+		inches = parseInt(inches);
+
+		var selected_breastfeeding_status = $("#select-breastfeeding-plus").val();
+		if ( selected_gender == 2 &&  selected_breastfeeding_status == 0 )
+		{
+			alert('Breastfeeding status is required');
+			return;
+		}				
+
+		var dpa = 0;
+		var height = feet * 12 + inches;	
+		//var height = (feet * 12 + inches) * 0.0254;			
+
+		if (selected_gender == 1) dpa = CalculateWWPlusDailyTargetScoreForMale(age, weight, height);
+		else if (selected_gender == 2) dpa = CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, selected_breastfeeding_status);
+
+		if (dpa != 0) $('#dpa-result').text('Your daily points allowance is ' + dpa);				
+	});		
 });
 
+$(document).on('pagecreate',function()
+{
+	var picker = $( '#txtDP', this );    
+	picker.mobipick( {intlStdDate: false} ); 
+});
+		
 $(document).on('pageshow', '#wizard-page, #home-page', function (event, ui) 
 {
     var args = document.location.search.substring(1).split('&');		
@@ -134,7 +244,7 @@ $(document).on('pageshow', '#wizard-page, #home-page', function (event, ui)
         showDiv("#page1-unit-settings", true);
     }
 });	
-
+		
 function showDiv(pageId, show_buttons)
 {
     // Hide all page divs

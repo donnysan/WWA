@@ -175,17 +175,13 @@
 	       
 			<div id="plus-pa-settings" style="display: none;">
 				<hr style="height:1px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;"/>         
-				<div data-controltype="textblock">
-					<h3><b>Enter Calculation Values  - Plus System</b></h3>
-				</div>
-
 				<div>                  
 					<table cellpadding="0" cellspacing="0">										
 						<col style="width: 200px;" />					
 						<tr>												                                                   
 							<td>                                                                                 
 								<div class="mobile_label">                                       
-									Your Gender                                    
+									Select Your Gender                                    
 								</div>                                                                  
 								<div data-role="fieldcontain">                                       
 									<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-gender-plus" data-native-menu="false">                                          
@@ -216,135 +212,152 @@
 					</table>               
 				</div>    
  
+				<div class="mobile_label">Enter Your Age and Weight (lb)</div> 
 				<div>                  
 					<table cellpadding="0" cellspacing="0">										
-						<col style="width:75px;" />					
+						<col style="width:75px;" />		
+						<col style="width:75px;" />	
 						<tr>												                                                   
 							<td>                                                                                 
-								<div class="mobile_label">                                       
-									Your Age                                    
-								</div>                                                                  
-								<div data-role="fieldcontain">                                       
-									<input id="txt-plus-age" type="text" max="999"/>                                 
-								</div>  																   
-							</td>	
-						</tr>	
-						<tr>												                                                   
-							<td>           
-								<div data-role="fieldcontain">                                                                      
-									<div class="mobile_label">                                       
-										Your Weight (lb)                                   
-									</div>                                                                                                      
-									<input id="txt-plus-weight" type="text" max="999"/>                                 
-								</div> 																   
+								<div class="mobile_label">Age</div>                                                                                                     
+								<input id="txt-plus-age" type="text" max="999"/>                                 																   
+							</td>													                                                   
+							<td>                                                                               
+								<div class="mobile_label">Weight</div>                                                                                                      
+								<input id="txt-plus-weight" type="text" max="999"/>                                 															   
 							</td>	
 						</tr>					                            
 					</table>               
 				</div>  
 				
-				<div class="mobile_label">Enter Your Height</div> 
+				<div class="mobile_label">Enter Your Height (ft/in)</div> 
 				<div>                  
 					<table cellpadding="0" cellspacing="0">									
-						<col style="width:200px;" />					
+						<col style="width:75px;" />		
+						<col style="width:75px;" />	
 						<tr>												                                                   
 							<td>                                                                                 
-								<div class="mobile_label">                                       
-									Feet                                    
-								</div>                                                                  
-								<input type="text" id="txt-height-ft" />																   
-							</td>	
-						</tr>	
-						<tr>												                                                   
+								<div class="mobile_label">Feet</div>                                                                  
+								<input type="text" id="txt-height-ft" max="99" />																   
+							</td>													                                                   
 							<td>                                                                                 
-								<div class="mobile_label">                                       
-									Inches                                    
-								</div>                                                                  
-								<input type="text" id="txt-height-in"/> 																   
+								<div class="mobile_label">Inches</div>                                                                  
+								<input type="text" id="txt-height-in" max="99"/> 																   
 							</td>	
 						</tr>					                            
 					</table>               
 				</div>
-				<div id="btn-calculate-dpa-plus" data-role="button">Calculate Plus DPA</div>
-            		</div> 
+				
+				<div>                  
+					<table cellpadding="0" cellspacing="0">									
+						<col style="width:75px;" />		
+						<tr>												                                                   
+							<td>                                                                                 
+								<div id="btn-calculate-dpa-plus" data-role="button">Calculate</div>																   
+							</td>													                                                   	
+						</tr>					                            
+					</table>               
+				</div>
+				
+            </div> 
  
-			<div id="classic-pa-settings" style="display: none;">   
-    		    	        <div data-controltype="textblock">             
-			    		<h3><b>Enter Calculation Values - Classic System</b></h3>         
-    		    		</div>     
-
+			<div id="classic-pa-settings" style="display: none;">      
 		    	<div>                  
 		    	    <table cellpadding="0" cellspacing="0">									
-				    <col style="width:auto;" />					
-				    <tr>												                                                    
-					    <td>                                                                                 
-						    <div class="mobile_label">                                       
-							    Your Gender                                    
-						    </div>                                                                  
-						    <div data-role="fieldcontain">                                       
-							    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-gender-classic" data-native-menu="false">                                          
-								    <option value="0" selected="selected"> - Select - </option>  
-								    <option value="1">Male</option>             
-								    <option value="2">Female</option>  
-							    </select>                                  
-						    </div>  																   
-					    </td>	
-				    </tr>					                            
-			    </table>               
-		    	</div> 
-			
-		    <div data-role="fieldcontain" id="div-breastfeeding-mom-classic" data-controltype="selectmenu" style="display: none;">             
-   		            <input type="checkbox" name="classic-breastfeeding" value="0" id="ckBreastfeeding">          
-    			    <label for="ckBreastfeeding">Breastfeeding Mom</label>        
-		    </div>   
+						<col style="width:250px;" />					
+						<tr>												                                                    
+							<td>                                                                                 
+								<div class="mobile_label">                                       
+									Your Gender                                    
+								</div>                                                                  
+								<div data-role="fieldcontain">                                       
+									<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-gender-classic" data-native-menu="false">                                          
+										<option value="0" selected="selected"> - Select - </option>  
+										<option value="1">Male</option>             
+										<option value="2">Female</option>  
+									</select>                                  
+								</div>  																   
+							</td>	
+						</tr>	
+						<tr>
+							<td>
+								<div id="div-breastfeeding-mom-classic" style="display: none;">
+									<input type="checkbox" name="classic-breastfeeding" value="0" id="ckBreastfeeding">          
+									<label for="ckBreastfeeding">Breastfeeding Mom</label>  		
+								</div>
+							</td>
+						</tr>
+			        </table>               
+		    	</div>  
 
-		    <div>                  
-			    <table cellpadding="0" cellspacing="0">										
-				    <col style="width:100px;" />					
-				    <tr>												                                                   
-					    <td>                                                                                 
-						    <div class="mobile_label">Your Age</div>                                                                  
-						    <select id="select-age-classic" name="">               
-						            <option value="0"> - Select - </option>  
-							    <option value="1">17 - 26</option>             
-							    <option value="2">27 - 37</option>   
-							    <option value="3">38 - 47</option>             
-							    <option value="4">48 - 58</option>  
-							    <option value="5">Over 58</option>                            
-						    </select>   																   
-					    </td>	
-				    </tr>	
-				    <tr>												                                                   
-					    <td>           
-					             <div data-role="fieldcontain">                                                                      
-					             <div class="mobile_label">Your Weight (lb)</div>                                                                                                      
-						             <input id="txt-classic-weight" type="text" max="999"/>                                  
-						     </div> 																   
-					    </td>	
-				    </tr>					                            
-			    </table>               
-		    </div>  
+				<div class="mobile_label">Enter Your Age and Weight (lb)</div> 
+				<div>                  
+					<table cellpadding="0" cellspacing="0">										
+						<col style="width:100px;" />
+						<col style="width:100px;" />
+						<tr>												                                                   
+							<td>                                                                                 
+								<div class="mobile_label">Age</div>                                                                  
+								<select id="select-age-classic" name="">               
+									<option value="0"> - Select - </option>  
+									<option value="1">17 - 26</option>             
+									<option value="2">27 - 37</option>   
+									<option value="3">38 - 47</option>             
+									<option value="4">48 - 58</option>  
+									<option value="5">Over 58</option>                            
+								</select>   																   
+							</td>													                                                   
+							<td>                                                                              
+								 <div class="mobile_label">Weight</div>                                                                                                      
+								 <input id="txt-classic-weight" type="text" max="999"/>                                  																   
+							</td>	
+						</tr>					                            
+					</table>               
+				</div>  
 				
-    		    <div data-role="fieldcontain" data-controltype="selectmenu">             
-					<label for="select-height-classic">Your height</label>             
-					<select id="select-height-classic">                  
-						<option value="0">- Select -</option>                
-						<option value="1">Under 5'1&#34; / 1.55m</option>                
-						<option value="2">5'1&#34; to 5&#34;10&#34; / 1.55m to 1.78m</option>                 
-						<option value="3">Over 5'10&#34; / 1.78m</option>              
-					</select>       
-    		    </div>         
-    		    <div data-role="fieldcontain" data-controltype="selectmenu">            
-					<label for="select-activity-level-classic">Your Daily Routine</label>             
-					<select id="select-activity-level-classic" name="">                 
-						<option value="0">- Select -</option>                  
-						<option value="1">Mostly Sitting</option>                  
-						<option value="2">Occasionally Sitting</option>                
-						<option value="3">Mostly Walking</option>                
-						<option value="4">Mostly Hard Physical Work</option>              
-         	        		</select>         
-    		    </div>  
+				<div>                  
+					<table cellpadding="0" cellspacing="0">										
+						<col style="width: 200px" />					
+						<tr>												                                                   
+							<td>                                                                                 
+								<div class="mobile_label">                                       
+									Select Your height                                    
+								</div>                                                                  
+								<div data-role="fieldcontain">                                       
+									<select id="select-height-classic">                  
+										<option value="0">- Select -</option>                
+										<option value="1">Under 5'1&#34; / 1.55m</option>                
+										<option value="2">5'1&#34; to 5&#34;10&#34; / 1.55m to 1.78m</option>                 
+										<option value="3">Over 5'10&#34; / 1.78m</option>              
+									</select>                                  
+								</div>  																   
+							</td>	
+						</tr>	
+						<tr>												                                                   
+							<td>                                                                             
+								<div class="mobile_label">Select Your Daily Routine</div>                                                                                                        
+								<select id="select-activity-level-classic" name="">                 
+									<option value="0">- Select -</option>                  
+									<option value="1">Mostly Sitting</option>                  
+									<option value="2">Occasionally Sitting</option>                
+									<option value="3">Mostly Walking</option>                
+									<option value="4">Mostly Hard Physical Work</option>              
+								</select>                                  															   
+							</td>	
+						</tr>					                            
+					</table>               
+				</div>    
 
-		    <div id="btn-calculate-dpa-classic" data-role="button">Calculate Classic DPA</div>
+				<div>                  
+					<table cellpadding="0" cellspacing="0">									
+						<col style="width:75px;" />		
+						<tr>												                                                   
+							<td>                                                                                 
+								<div id="btn-calculate-dpa-classic" data-role="button">Calculate</div>																   
+							</td>													                                                   	
+						</tr>					                            
+					</table>               
+				</div>
 	        </div> 
 		
 	        <div data-role="controlgroup" data-type="horizontal" id="page3-points-allowance-settings-buttons">
@@ -434,124 +447,8 @@
 	<script type="text/javascript" src="./js/daily-points-allowance-calculator.js"></script> 
 	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.plugin.js"></script>   
 	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.js"></script>	
-	<script> 
-		$(function() 
-		{
-      			$("#btn-calculate-dpa-classic").click( function()
-           		{
-				if ($("#select-gender-classic").val() == 0 ||
-				    $("#select-age-classic").val() == 0 ||
-				    $("#txt-classic-weight").val() == '' ||
-				    $("#select-height-classic").val() == 0 ||
-				    $("#select-activity-level-classic").val() == 0 )
-				{
-					alert('Required fields not entered');
-					return;
-				}
-
-				if ($("#txt-classic-weight").val().length < 2)
-				{
-					alert('Weight must be at least 2 digits.');
-					return;
-				}
-
-				//alert('Passed validation');
-
-				// Get selected gender
-				var selectedGender = 0;
-				var genderIndex = $("#select-gender-classic").find(":selected").val();	
-						
-				if (genderIndex == 1) 
-				{
-					selectedGender = GENDER_MALE;
-				}
-				else if (genderIndex == 2) 
-				{					
-					var isBreastfeeding = $("#ckBreastfeeding").prop("checked");
-
-					if (isBreastfeeding) selectedGender = GENDER_FEMALE_BREASTFEEDING;
-					else selectedGender = GENDER_FEMALE_NOT_BREASTFEEDING;
-				}
-
-				var selectedAge = $("#select-age-classic").find(":selected").val();
-				var inputWeight = parseInt( $("#txt-classic-weight").val() );
-				var selectedHeight = $("#select-height-classic").find(":selected").val(); 
-				var selectedActivityLevel = $("#select-activity-level-classic").find(":selected").val();   
-
-             			var dpa = CalculateClassicDPA(selectedGender, selectedAge, inputWeight, selectedHeight, selectedActivityLevel);
-				$('#dpa-result').text('Your daily points allowance is ' + dpa);
-           		});
-
-			$("#btn-calculate-dpa-plus").click( function()
-			{		
-				var selected_gender = $("#select-gender-plus").find(":selected").val();	
-				if (selected_gender == 0)
-				{
-					alert('Gender is required');
-					return;
-				}
-
-				var age = $("#txt-plus-age").val();
-				if (age == '')
-				{
-					alert('Age is required');
-					return;
-				}
-				age = parseInt(age);
-
-				var weight = $("#txt-plus-weight").val();
-				if (weight == '')
-				{
-					alert('Weight is required');
-					return;
-				}
-				//weight = parseInt(weight) * 0.45359237;
-				weight = parseInt(weight);
-
-				var feet = $("#txt-height-ft").val();
-				if (feet == 0)
-				{
-					alert('Height feet is required');
-					return;
-				}
-				feet = parseInt(feet);
-
-				var inches = $("#txt-height-in").val();
-				if (inches == -1)
-				{
-					alert('Height inches is required');
-					return;
-				}
-				inches = parseInt(inches);
-
-				var selected_breastfeeding_status = $("#select-breastfeeding-plus").val();
-				if ( selected_gender == 2 &&  selected_breastfeeding_status == 0 )
-				{
-					alert('Breastfeeding status is required');
-					return;
-				}				
-
-				var dpa = 0;
-				var height = feet * 12 + inches;	
-				//var height = (feet * 12 + inches) * 0.0254;			
-
-				if (selected_gender == 1) dpa = CalculateWWPlusDailyTargetScoreForMale(age, weight, height);
-				else if (selected_gender == 2) dpa = CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, selected_breastfeeding_status);
-
-				if (dpa != 0) $('#dpa-result').text('Your daily points allowance is ' + dpa);
-				
-			});
-		});
-	</script>
 	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/external/xdate.js"></script> 
 	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/external/xdate.i18n.js"></script> 
 	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/js/mobipick.js"></script>
-	<script type="text/javascript">
-		$(document).on("pagecreate",function()
-		{
-			var picker = $( "#txtDP", this );    
-			picker.mobipick( {intlStdDate: false} ); 
-		});
-	</script>
 </body>
 </html>	
