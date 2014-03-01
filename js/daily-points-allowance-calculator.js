@@ -130,32 +130,53 @@ function CalculateClassicDPA(gender, age, weight, height, activity_level)
 	return dpa;
 }
 
-        function CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, breastFeeding)
-        {
-            var TEE = 387 - (7.31 * age);
-            TEE += 1.14 * ((10.9 * weight) + (660.7 * height));
-            TEE = ((TEE * .9) + 200) - 1000;
-            if (TEE < 1000) TEE = 1000; 
-            TEE = Math.Round(TEE / 35) - 11;
-            if (TEE < 26) TEE = 26;
-            if (TEE > 71) TEE = 71;
+/*
 
-            if (breastFeeding == SUPPLEMENTALLY_BREASTFEEDING) TEE += 7;
-            else if (breastFeeding == EXCLUSIVELY_BREASTFEEDING) TEE += 14;
+http://easycalculation.com/health/Daily-points-plus-allowance.php
 
-	    return TEE;
-            //return Convert.ToInt32(TEE);
-        }
+Formula Used:
+DPm = Min{ Max{round[ ((ht-48)/2.25) + (wt×0.1834) - ((age-17)/4) ], 29} , 71} 
+DPf = Min{ Max{round[ ((ht-48)/2) + (wt×0.1461) - ((age-21)/5) - 5 ], 29} , 71} 
 
-        function CalculateWWPlusDailyTargetScoreForMale(age, dweight, height)
-        {
-            var TEE = 864 - (9.72 * age);
-            TEE += 1.12 * ((14.2 * weight) + (503 * height));
-            TEE = ((TEE * .9) + 200) - 1000;
-            if (TEE < 1000) TEE = 1000;
-            TEE = Math.Round(TEE / 35) - 11;
-            if (TEE < 29) TEE = 29;
+Where, 
+      DPm and DPf are the daily points for male and female respectively.
+      ht - Height
+      wt - weight
+*/
 
-	    return TEE;
-            //return Convert.ToInt32(TEE);
-        }
+var WEIGHT_SCALAR = 0.45359237;
+var HEIGHT_SCALAR = 0.0254;
+
+function CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, breastFeeding)
+{
+	weight *= WEIGHT_SCALAR;	
+	height *= HEIGHT_SCALAR;
+
+        var dpa = 387 - (7.31 * age);
+        dpa += 1.14 * ((10.9 * weight) + (660.7 * height));
+        dpa = ((dpa * .9) + 200) - 1000;
+        if (dpa < 1000) dpa = 1000; 
+        dpa = Math.round(dpa / 35) - 11;
+        if (dpa < 26) dpa = 26;
+        if (dpa > 71) dpa = 71;
+
+        if (breastFeeding == SUPPLEMENTALLY_BREASTFEEDING) dpa += 7;
+        else if (breastFeeding == EXCLUSIVELY_BREASTFEEDING) dpa += 14;
+
+	return dpa;
+}
+
+function CalculateWWPlusDailyTargetScoreForMale(age, weight, height)
+{
+	weight *= WEIGHT_SCALAR;	
+	height *= HEIGHT_SCALAR;
+
+        var dpa = 864 - (9.72 * age);
+        dpa += 1.12 * ((14.2 * weight) + (503 * height));
+        dpa = ((dpa * .9) + 200) - 1000;
+        if (dpa < 1000) dpa = 1000;
+        dpa = Math.round(dpa / 35) - 11;
+        if (dpa < 29) dpa = 29;
+
+	return dpa;
+}

@@ -1,16 +1,14 @@
 
 .info_image 
 {
-	
-    margin: 40px 0px 4px 8px;
-	
-    width: 24px; height: 24px;
-	
-    display: block;
+	margin-top:40px;
+	margin-right:0px;
+	margin-bottom:4px;	
+	margin-left:4px;
 
+        width: 24px; height: 24px;	
+        display: block;
 }
-
-
 
 .mobile_label 
 {
@@ -28,6 +26,22 @@
 	
     white-space: normal;
 
+}
+
+.mobile_label_2_line
+{
+    text-decoration: none; 
+    font-weight: normal; 
+    font-style: italic; 
+    text-align: left; 
+    font-family: Helvetica; 
+    font-size: 16px;
+	
+    margin: 10px 0px 4px 0px;
+	
+    word-wrap: break-word;
+	
+    white-space: normal;
 }
 
 

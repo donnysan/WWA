@@ -1,6 +1,5 @@
 $(document).ready(function() {    
-    // hide #page1-unit-settings previous button, #page2-weight-settings and #page3-points-allowance-settings once opened
-    $(document).find('#page1-unit-settings a.prev').hide();
+    // hide #page2-weight-settings, #page3-points-allowance-settings, and #page4-actvity-settings once opened
     //$('#page2-weight-settings, #page3-points-allowance-settings, #page4-actvity-settings').hide();
 
     // #page1-unit-settings to #page2-weight-settings
@@ -16,45 +15,39 @@ $(document).ready(function() {
     $('#page2-weight-settings a.next').on('click', function () 
     {
         $('#page2-weight-settings').hide();
-        $('#page3-points-allowance-settings').show();
-		
-		setHeaderText('#page3-points-allowance-settings', true);
+        $('#page3-points-allowance-settings').show();		
+	setHeaderText('#page3-points-allowance-settings', true);
     });
 
     // #page3-points-allowance-settings to #page4-actvity-settings
     $('#page3-points-allowance-settings a.next').on('click', function () 
     {
         $('#page1-unit-settings, #page2-weight-settings, #page3-points-allowance-settings').hide();
-        $('#page4-actvity-settings').show();
-        $(document).find('#page4-actvity-settings a.next').hide();
-		
-		setHeaderText('#page4-actvity-settings', true);
+        $('#page4-actvity-settings').show();		
+	setHeaderText('#page4-actvity-settings', true);
     });
 
     // #page4-actvity-settings to #page3-points-allowance-settings
     $('#page4-actvity-settings a.prev').on('click', function () 
     {
-		$('#page3-points-allowance-settings, #page4-actvity-settings').hide();
-		$('#page3-points-allowance-settings').show(); 
-		
-		setHeaderText('#page3-points-allowance-settings', true);
+	$('#page3-points-allowance-settings, #page4-actvity-settings').hide();
+	$('#page3-points-allowance-settings').show(); 		
+	setHeaderText('#page3-points-allowance-settings', true);
     });
 
     // #page3-points-allowance-settings to #page2-weight-settings
     $('#page3-points-allowance-settings a.prev').on('click', function () 
     {
         $('#page2-weight-settings, #page3-points-allowance-settings').hide();
-        $('#page2-weight-settings').show();
-		
-		setHeaderText('#page2-weight-settings', true);
+        $('#page2-weight-settings').show();		
+	setHeaderText('#page2-weight-settings', true);
     });
 
     // #page2-weight-settings to #page1-unit-settings
     $('#page2-weight-settings a.prev').on('click', function () {
         $('#page2-weight-settings').hide();
-        $('#page1-unit-settings').show();
-		
-		setHeaderText('#page1-unit-settings', true);
+        $('#page1-unit-settings').show();		
+	setHeaderText('#page1-unit-settings', true);
     });	
 
     // KeyDown Key Filters   

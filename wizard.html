@@ -5,14 +5,15 @@
 	<meta charset="utf-8">     
 	<title>Settings</title>
 
-	<link rel="stylesheet" href="./css/jquery.mobile-1.3.2.min.css">
+	<link rel="stylesheet" href="./css/jquery.mobile-1.3.2.min.css" type="text/css">
 	<link rel="stylesheet" href="./Plugins/Zebra-Datepicker/examples/public/css/style.css" type="text/css">
 	<link rel="stylesheet" href="./Plugins/Zebra-Datepicker/public/css/default.css" type="text/css"> 
 	<link rel="stylesheet" href="./Plugins/Zebra_Dialog-1.3.8/public/css/default/zebra_dialog.css" type="text/css" />
 	<link rel="stylesheet" href="./css/wizard.css" type="text/css" />	
-	<link href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" rel="stylesheet">	
-	<link href="./Plugins/Touch Friendly Input Spinner/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-	<link href="./Plugins/JQuerySpinnerControl_1.0.2/Styles/jquery.spinnercontrol.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" type="text/css">	
+	<link rel="stylesheet" href="./Plugins/Touch Friendly Input Spinner/bootstrap/css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="./Plugins/JQuerySpinnerControl_1.0.2/Styles/jquery.spinnercontrol.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/css/mobipick.css" />
 </head>
 <body>
 	<!-- Wizard Control -->
@@ -81,7 +82,7 @@
 									<option value="2">Half Point (0.5)</option>
 									<option value="3">Tenth Point (0.1)</option>											 
 								</select>											
-						    </div>		  
+						        </div>		  
 						</td>
 					</tr>                              
 				</table>               
@@ -90,7 +91,6 @@
 			<hr>
 
 			<div data-role="controlgroup" data-type="horizontal" id="page1-unit-settings-buttons">
-				<a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
 				<a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
 			</div>           
 		</div>
@@ -102,19 +102,39 @@
 				<div style="width: 75px">     
 					<input type="text" id="current-weight" max="999">  
 				</div>     
-    		</div>         
-   		    <div data-role="fieldcontain" data-controltype="textinput">             
+    			</div>         
+   		    	<div data-role="fieldcontain" data-controltype="textinput">             
 				<label for="goal-weight">Enter your weight goal (lb/kg):</label>
 				<div style="width: 75px">             
 					<input type="text" name="goal-weight" id="goal-weight" max="999">
 				</div>      
-			</div>         
-    		<div data-role="fieldcontain" data-controltype="dateinput">              
-       			<label for="test-datepicker">Enter your goal date:</label>
-		        <div style="width: 200px"">
-				   <input id="test-datepicker" type="text">
-                </div>
-    		</div>
+			</div>  
+       
+			<div>                  
+				<table cellpadding="0" cellspacing="0">										
+					<col style="width:auto;" />					
+					<tr>												                                                   
+						<td>                                                                                 
+							<div class="mobile_label">                                       
+								Enter your goal date (old DatePicker)                                   
+							</div>                                                                  
+							<div data-role="fieldcontain">                                       
+								<input id="test-datepicker" type="text">                                 
+							</div>  																   
+						</td>	
+					</tr>
+					<tr>												                                                   
+						<td>                                                                                 
+							<div class="mobile_label">                                       
+								Enter your goal date (new DatePicker)                                   
+							</div>                                                                  
+							<div data-role="fieldcontain">                                       
+								<input type="text" id="txtDP" />                                 
+							</div>  																   
+						</td>	
+					</tr>								                            
+				</table>               
+			</div>
 
 	        <div data-role="controlgroup" data-type="horizontal" id="page2-weight-settings-buttons">
 		    <a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
@@ -135,7 +155,7 @@
 							</div>                          
 						</td>                                                     
 						<td>                                                                                 
-							<div class="mobile_label">                                       
+							<div class="mobile_label_2_line">                                       
 								How do you want to determine your Daily Point Allowance?                                    
 							</div>                                                                  
 							<div data-role="fieldcontain">                                       
@@ -156,7 +176,7 @@
 					<col style="width:100px;" />  
 					<tr>                                                                                                                             
 						<td>    
-						<label for="txtUserSpecifiedDPA">Enter a Value</label>                                                                     
+							<label for="txtUserSpecifiedDPA">Enter a Value</label>                                                                     
 							<input type="text" id="txtUserSpecifiedDPA" />                      
 						</td>
 					</tr>
@@ -173,122 +193,176 @@
 					<h3><b>Enter Calculation Values  - Plus System</b></h3>
 				</div>
 
-
-
 				<!-- Old spinner -->
 				<h4> This is the spinner that was 'double bumping' on the phone</h4>
-				<div class="ui-grid-a">           
-					<div class="ui-block-a">                
-						<div data-role="fieldcontain" data-controltype="textinput">                     
-							<label for="user-height-feet">Your height (ft / m)</label>                     
-							<input id="user-height-feet" type="text" value="" name="user-height-feet">               
-						</div>           
-					</div>            
-					<div class="ui-block-b">   
-						<div data-role="fieldcontain" data-controltype="textinput">  
-							<label for="user-height-inches">Your height (in / m)</label>                     
-							<input id="user-height-inches" type="text" value="" name="user-height-inches">   
-						</div> 
-					</div>        
+
+	        		<div>                
+					<table cellpadding="0" cellspacing="0">                      
+						<col style="width:300px;" />  
+						<tr>                                                                                                                            
+							<td>    
+								<div class="mobile_label">                                       
+									Your height (ft / m)                                    
+								</div>   
+                  						<input id="user-height-feet" type="text" value="" name="user-height-feet">
+							</td>
+						</tr>
+						<tr>
+							<td>    
+								<div class="mobile_label">                                       
+									Your height (in / m)                                    
+								</div>   
+                  						<input id="user-height-inches" type="text" value="" name="user-height-inches">
+							</td>
+						</tr>
+					</table>  
 				</div>
 
-				<div data-role="fieldcontain" data-controltype="selectmenu">             
-					<label for="select-gender-plus">Your Gender</label>            
-					<select id="select-gender-plus" name="">   
-						<option value="0" selected="selected"> - Select - </option>  
-						<option value="1">Male</option>             
-						<option value="2">Female</option>             
-					</select>      
-				</div>          
-				<div data-role="fieldcontain" id="div-breastfeeding-mom-plus" data-controltype="selectmenu" style="display: none;">             
-					<label for="select-breastfeeding-plus">Are you Breastfeeding?</label>           
-					<select id="select-breastfeeding-plus">    
-						<option value="0" selected="selected"> - Select - </option>  
-						<option value="1">Not Breastfeeding</option>                 
-						<option value="2">Supplementally Breastfeeding</option>                
-						<option value="3">Exclusively Breastfeeding</option>            
-					</select>       
-				</div>      
+				<div>                  
+					<table cellpadding="0" cellspacing="0">										
+						<col style="width: 200px;" />					
+						<tr>												                                                   
+							<td>                                                                                 
+								<div class="mobile_label">                                       
+									Your Gender                                    
+								</div>                                                                  
+								<div data-role="fieldcontain">                                       
+									<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-gender-plus" data-native-menu="false">                                          
+										<option value="0" selected="selected"> - Select - </option>  
+										<option value="1">Male</option>             
+										<option value="2">Female</option>  
+									</select>                                  
+								</div>  																   
+							</td>	
+						</tr>	
+						<tr>												                                                   
+							<td>           
+								<div id="div-breastfeeding-mom-plus" style="display: none;">                                                                      
+									<div class="mobile_label">                                       
+										Are you Breastfeeding?                                    
+									</div>                                                                  
+									<div data-role="fieldcontain">                                       
+										<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-breastfeeding-plus" data-native-menu="false">                                          
+											<option value="0" selected="selected"> - Select - </option>  
+											<option value="1">Not Breastfeeding</option>                 
+											<option value="2">Supplementally Breastfeeding</option>                
+											<option value="3">Exclusively Breastfeeding</option>     
+										</select>                                  
+									</div>  
+								</div> 																   
+							</td>	
+						</tr>					                            
+					</table>               
+				</div>    
  
-				<div class="ui-grid-a">             
-					<div class="ui-block-a">					  
-						<div data-role="fieldcontain" data-controltype="textinput">						  
-							<label for="txt-plus-age">Your Age (years)</label>						  
-							<input id="txt-plus-age" type="text" max="999"/>					  
-						</div>         
-					</div>            
-					<div class="ui-block-b">                 
-						<div data-role="fieldcontain" data-controltype="textinput">                   
-							<label for="txt-plus-weight">Your Weight (lb)</label>                     
-							<input id="txt-plus-weight" type="text" max="999"/>                 
-						</div>             
-					</div>         
-				</div> 
+				<div>                  
+					<table cellpadding="0" cellspacing="0">										
+						<col style="width:75px;" />					
+						<tr>												                                                   
+							<td>                                                                                 
+								<div class="mobile_label">                                       
+									Your Age                                    
+								</div>                                                                  
+								<div data-role="fieldcontain">                                       
+									<input id="txt-plus-age" type="text" max="999"/>                                 
+								</div>  																   
+							</td>	
+						</tr>	
+						<tr>												                                                   
+							<td>           
+								<div data-role="fieldcontain">                                                                      
+									<div class="mobile_label">                                       
+										Your Weight (lb)                                   
+									</div>                                                                                                      
+									<input id="txt-plus-weight" type="text" max="999"/>                                 
+								</div> 																   
+							</td>	
+						</tr>					                            
+					</table>               
+				</div>  
 				
 				<!-- New spinner -->
-				<label for="fcHeight">Enter Your Height</label>
-	   			<div class="ui-grid-a">  
-					<div class="ui-block-a">   
-		    				<div data-role="fieldcontain" data-controltype="textinput" id="fcHeight">	  
-							<div>                           
-		            					<label for="txt-height-ft">Feet</label> 
-			    					<input type="text" id="txt-height-ft" />
-							</div> 
-		    				</div>                                   
-					</div>           
-					<div class="ui-block-b">					  
-		    				<div data-role="fieldcontain" data-controltype="textinput">	
-							<div> 					  
-			    					<label for="txt-height-in">Inches</label>
-			    					<div>
-			        					<input type="text" id="txt-height-in"/>
-			    					</div>	
-							</div>					  												  
-		    				</div> 
-					</div>                              		        
-	    			</div> 
+				<div class="mobile_label">Enter Your Height</div> 
+				<div>                  
+					<table cellpadding="0" cellspacing="0">									
+						<col style="width:200px;" />					
+						<tr>												                                                   
+							<td>                                                                                 
+								<div class="mobile_label">                                       
+									Feet                                    
+								</div>                                                                  
+								<input type="text" id="txt-height-ft" />																   
+							</td>	
+						</tr>	
+						<tr>												                                                   
+							<td>                                                                                 
+								<div class="mobile_label">                                       
+									Inches                                    
+								</div>                                                                  
+								<input type="text" id="txt-height-in"/> 																   
+							</td>	
+						</tr>					                            
+					</table>               
+				</div>
+				<div id="btn-calculate-dpa-plus" data-role="button">Calculate Plus DPA</div>
             		</div> 
  
 			<div id="classic-pa-settings" style="display: none;">   
-    		    <div data-controltype="textblock">             
-					<h3><b>Enter Calculation Values - Classic System</b></h3>         
-    		    </div>     
+    		    	        <div data-controltype="textblock">             
+			    		<h3><b>Enter Calculation Values - Classic System</b></h3>         
+    		    		</div>     
 
-    		    <div data-role="fieldcontain" data-controltype="selectmenu">             
-					<label for="select-gender-classic">Your Gender</label>              
-					<select id="select-gender-classic" name="">               
-						<option value="0"> - Select - </option>  
-						<option value="1">Male</option>             
-						<option value="2">Female</option>                               
-					</select>       
-    		    </div>  
+		    	<div>                  
+		    	    <table cellpadding="0" cellspacing="0">									
+				    <col style="width:auto;" />					
+				    <tr>												                                                    
+					    <td>                                                                                 
+						    <div class="mobile_label">                                       
+							    Your Gender                                    
+						    </div>                                                                  
+						    <div data-role="fieldcontain">                                       
+							    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-gender-classic" data-native-menu="false">                                          
+								    <option value="0" selected="selected"> - Select - </option>  
+								    <option value="1">Male</option>             
+								    <option value="2">Female</option>  
+							    </select>                                  
+						    </div>  																   
+					    </td>	
+				    </tr>					                            
+			    </table>               
+		    	</div> 
 			
 		    <div data-role="fieldcontain" id="div-breastfeeding-mom-classic" data-controltype="selectmenu" style="display: none;">             
    		            <input type="checkbox" name="classic-breastfeeding" value="0" id="ckBreastfeeding">          
     			    <label for="ckBreastfeeding">Breastfeeding Mom</label>        
 		    </div>   
 
-    		    <div class="ui-grid-a">           
-					<div class="ui-block-a">                 
-						<div data-role="fieldcontain" data-controltype="textinput">                    
-							<label for="select-age-classic">Your Age</label>                                
-							<select id="select-age-classic" name="">               
-								<option value="0"> - Select - </option>  
-								<option value="1">17 - 26</option>             
-								<option value="2">27 - 37</option>   
-								<option value="3">38 - 47</option>             
-								<option value="4">48 - 58</option>  
-								<option value="5">Over 58</option>                            
-							</select>                
-						</div>            
-					</div>            
-					<div class="ui-block-b">                
-						<div data-role="fieldcontain" data-controltype="textinput">                      
-							<label for="txt-classic-weight">Your Weight (lb)</label>                     
-							<input id="txt-classic-weight" type="text" max="999"/>                 
-						</div>           
-					</div>         
-    		    </div>   
+		    <div>                  
+			    <table cellpadding="0" cellspacing="0">										
+				    <col style="width:100px;" />					
+				    <tr>												                                                   
+					    <td>                                                                                 
+						    <div class="mobile_label">Your Age</div>                                                                  
+						    <select id="select-age-classic" name="">               
+						            <option value="0"> - Select - </option>  
+							    <option value="1">17 - 26</option>             
+							    <option value="2">27 - 37</option>   
+							    <option value="3">38 - 47</option>             
+							    <option value="4">48 - 58</option>  
+							    <option value="5">Over 58</option>                            
+						    </select>   																   
+					    </td>	
+				    </tr>	
+				    <tr>												                                                   
+					    <td>           
+					             <div data-role="fieldcontain">                                                                      
+					             <div class="mobile_label">Your Weight (lb)</div>                                                                                                      
+						             <input id="txt-classic-weight" type="text" max="999"/>                                  
+						     </div> 																   
+					    </td>	
+				    </tr>					                            
+			    </table>               
+		    </div>  
 				
     		    <div data-role="fieldcontain" data-controltype="selectmenu">             
 					<label for="select-height-classic">Your height</label>             
@@ -307,7 +381,7 @@
 						<option value="2">Occasionally Sitting</option>                
 						<option value="3">Mostly Walking</option>                
 						<option value="4">Mostly Hard Physical Work</option>              
-         	        </select>         
+         	        		</select>         
     		    </div>  
 
 		    <div id="btn-calculate-dpa-classic" data-role="button">Calculate Classic DPA</div>
@@ -321,33 +395,72 @@
 		
 	    <!-- Activity Settings -->
 		<div data-role="content" id="page4-actvity-settings">
-			<div data-role="fieldcontain" data-controltype="selectmenu">    
-				<label for="selectmenu17">Accumulation Frequency</label>           
-				<select id="selectmenu17" name="">    
-					<option>- Select -</option>              
-					<option value="0">Daily</option>             
-					<option value="1">Weekly</option>             
-				</select>         
-			</div>        
-			<div data-role="fieldcontain" data-controltype="selectmenu">             
-				<label for="selectmenu18">Precision</label>             
-				<select id="selectmenu18" name="">     
-					<option>- Select -</option>             
-					<option value="0">Round to nearest whole number</option>                
-					<option value="1">Round to nearest half number</option>              
-				</select>         
-			</div>        
-			<div data-role="fieldcontain" data-controltype="selectmenu">             
-				<label for="selectmenu19">Calculate By</label>             
-				<select id="selectmenu19" name="">   
-					<option>- Select -</option>               
-					<option value="0">Activity Intensity</option>                
-					<option value="1">Calories</option>              
-				</select>         
+			<div>                  
+				<table cellpadding="0" cellspacing="0">					
+					<col style="width:44px;" />					
+					<col style="width:auto;" />					
+					<tr>												
+						<td>							
+							<div>																 
+								<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+							</div>                          
+						</td>                                                     
+						<td>                                                                                 
+							<div class="mobile_label">                                       
+								Accumulation Frequency                                    
+							</div>                                                                  
+							<div data-role="fieldcontain">                                       
+								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-accumulation-frequency" data-native-menu="false">                                          
+									<option>- Select -</option>              
+									<option value="0">Daily</option>             
+									<option value="1">Weekly</option>  
+								</select>                                  
+							</div>  																   
+						</td>	
+					</tr>	
+					<tr>												
+						<td>							
+							<div>																 
+								<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+							</div>                          
+						</td>                                                     
+						<td>                                                                                 
+							<div class="mobile_label">                                       
+								Precision                                    
+							</div>                                                                  
+							<div data-role="fieldcontain">                                       
+								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-precision" data-native-menu="false">                                          
+									<option>- Select -</option>             
+									<option value="0">Round to nearest whole number</option>                
+									<option value="1">Round to nearest half number</option>   
+								</select>                                  
+							</div>  																   
+						</td>	
+					</tr>	
+					<tr>												
+						<td>							
+							<div>																 
+								<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+							</div>                          
+						</td>                                                     
+						<td>                                                                                 
+							<div class="mobile_label">                                       
+								Calculate By                                    
+							</div>                                                                  
+							<div data-role="fieldcontain">                                       
+								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="select-calculate-by" data-native-menu="false">                                          
+									<option>- Select -</option>               
+									<option value="0">Activity Intensity</option>                
+									<option value="1">Calories</option>   
+								</select>                                  
+							</div>  																   
+						</td>	
+					</tr>								                            
+				</table>               
 			</div>
+
 			<div data-role="controlgroup" data-type="horizontal" id="page4-actvity-settings-buttons">
 				<a href="#" data-role="button" data-theme="b" class="prev" style="width: 125px; margin:0 10px 0px 0px;">Previous</a>
-				<a href="#" data-role="button" data-theme="e" class="next" style="width: 100px; margin:0 10px 0px 0px;">Next</a>
 			</div>
 		</div>
 	</div> 
@@ -386,7 +499,6 @@
                 }); 
             })
         </script>	
-
 	<script> 
 		$(function() 
 		{
@@ -434,6 +546,76 @@
              			var dpa = CalculateClassicDPA(selectedGender, selectedAge, inputWeight, selectedHeight, selectedActivityLevel);
 				$('#dpa-result').text('Your daily points allowance is ' + dpa);
            		});
+
+			$("#btn-calculate-dpa-plus").click( function()
+			{		
+				var selected_gender = $("#select-gender-plus").find(":selected").val();	
+				if (selected_gender == 0)
+				{
+					alert('Gender is required');
+					return;
+				}
+
+				var age = $("#txt-plus-age").val();
+				if (age == '')
+				{
+					alert('Age is required');
+					return;
+				}
+				age = parseInt(age);
+
+				var weight = $("#txt-plus-weight").val();
+				if (weight == '')
+				{
+					alert('Weight is required');
+					return;
+				}
+				//weight = parseInt(weight) * 0.45359237;
+				weight = parseInt(weight);
+
+				var feet = $("#txt-height-ft").val();
+				if (feet == 0)
+				{
+					alert('Height feet is required');
+					return;
+				}
+				feet = parseInt(feet);
+
+				var inches = $("#txt-height-in").val();
+				if (inches == -1)
+				{
+					alert('Height inches is required');
+					return;
+				}
+				inches = parseInt(inches);
+
+				var selected_breastfeeding_status = $("#select-breastfeeding-plus").val();
+				if ( selected_gender == 2 &&  selected_breastfeeding_status == 0 )
+				{
+					alert('Breastfeeding status is required');
+					return;
+				}				
+
+				var dpa = 0;
+				var height = feet * 12 + inches;	
+				//var height = (feet * 12 + inches) * 0.0254;			
+
+				if (selected_gender == 1) dpa = CalculateWWPlusDailyTargetScoreForMale(age, weight, height);
+				else if (selected_gender == 2) dpa = CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, selected_breastfeeding_status);
+
+				if (dpa != 0) $('#dpa-result').text('Your daily points allowance is ' + dpa);
+				
+			});
+		});
+	</script>
+	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/external/xdate.js"></script> 
+	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/external/xdate.i18n.js"></script> 
+	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/js/mobipick.js"></script>
+	<script type="text/javascript">
+		$(document).on("pagecreate",function()
+		{
+			var picker = $( "#txtDP", this );    
+			picker.mobipick( {intlStdDate: false} ); 
 		});
 	</script>
 </body>
