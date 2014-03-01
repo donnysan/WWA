@@ -6,13 +6,9 @@
 	<title>Settings</title>
 
 	<link rel="stylesheet" href="./css/jquery.mobile-1.3.2.min.css" type="text/css">
-	<link rel="stylesheet" href="./Plugins/Zebra-Datepicker/examples/public/css/style.css" type="text/css">
-	<link rel="stylesheet" href="./Plugins/Zebra-Datepicker/public/css/default.css" type="text/css"> 
 	<link rel="stylesheet" href="./Plugins/Zebra_Dialog-1.3.8/public/css/default/zebra_dialog.css" type="text/css" />
 	<link rel="stylesheet" href="./css/wizard.css" type="text/css" />	
 	<link rel="stylesheet" href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" type="text/css">	
-	<link rel="stylesheet" href="./Plugins/Touch Friendly Input Spinner/bootstrap/css/bootstrap.css" type="text/css">
-	<link rel="stylesheet" href="./Plugins/JQuerySpinnerControl_1.0.2/Styles/jquery.spinnercontrol.css" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/css/mobipick.css" />
 </head>
 <body>
@@ -116,16 +112,6 @@
 					<tr>												                                                   
 						<td>                                                                                 
 							<div class="mobile_label">                                       
-								Enter your goal date (old DatePicker)                                   
-							</div>                                                                  
-							<div data-role="fieldcontain">                                       
-								<input id="test-datepicker" type="text">                                 
-							</div>  																   
-						</td>	
-					</tr>
-					<tr>												                                                   
-						<td>                                                                                 
-							<div class="mobile_label">                                       
 								Enter your goal date (new DatePicker)                                   
 							</div>                                                                  
 							<div data-role="fieldcontain">                                       
@@ -193,31 +179,6 @@
 					<h3><b>Enter Calculation Values  - Plus System</b></h3>
 				</div>
 
-				<!-- Old spinner -->
-				<h4> This is the spinner that was 'double bumping' on the phone</h4>
-
-	        		<div>                
-					<table cellpadding="0" cellspacing="0">                      
-						<col style="width:300px;" />  
-						<tr>                                                                                                                            
-							<td>    
-								<div class="mobile_label">                                       
-									Your height (ft / m)                                    
-								</div>   
-                  						<input id="user-height-feet" type="text" value="" name="user-height-feet">
-							</td>
-						</tr>
-						<tr>
-							<td>    
-								<div class="mobile_label">                                       
-									Your height (in / m)                                    
-								</div>   
-                  						<input id="user-height-inches" type="text" value="" name="user-height-inches">
-							</td>
-						</tr>
-					</table>  
-				</div>
-
 				<div>                  
 					<table cellpadding="0" cellspacing="0">										
 						<col style="width: 200px;" />					
@@ -281,7 +242,6 @@
 					</table>               
 				</div>  
 				
-				<!-- New spinner -->
 				<div class="mobile_label">Enter Your Height</div> 
 				<div>                  
 					<table cellpadding="0" cellspacing="0">									
@@ -468,37 +428,12 @@
 	<script src="./js/jquery-1.11.0.min.js"></script>	
 	<script src="./js/jquery.mobile-1.3.2.min.js"></script>  
 	<script type="text/javascript" src="./js/zebra_dialog.js"></script>
-	<script type="text/javascript" src="./js/zebra_datepicker.js"></script> 
 	<script type="text/javascript" src="./js/wizard.js"></script>
 	<script type="text/javascript" src="./js/help.js"></script>      
 	<script type="text/javascript" src="./js/KeyFilters.js"></script>   
 	<script type="text/javascript" src="./js/daily-points-allowance-calculator.js"></script> 
 	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.plugin.js"></script>   
 	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.js"></script>	
-	<script src="./Plugins/Touch Friendly Input Spinner/bootstrap/js/bootstrap.min.js"></script>
-	<script src="./Plugins/Touch Friendly Input Spinner/bootstrap-touchspin/bootstrap.touchspin.js"></script>
-	<script>
-		$("input[name='user-height-feet']").TouchSpin({ min: 1, max: 9 });
-		$("input[name='user-height-inches']").TouchSpin({ min: 0, max: 11 });
-	</script>
-        <script src="./Plugins/JQuerySpinnerControl_1.0.2/jquery.spinnercontrol.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(function () {
-                //$("#txtDefault").SpinnerControl();
- 	        $("#txt-height-ft").SpinnerControl({
-                    type: 'range',
-                    typedata: { min: 0, max: 9, interval: 1 },
-                    defaultVal: 0,
-                    width: '50px'
-    	        }); 
-                $("#txt-height-in").SpinnerControl({
-                    type: 'range',
-                    typedata: { min: -1, max: 11, interval: 1 },
-                    defaultVal: -1,
-                    width: '50px'
-                }); 
-            })
-        </script>	
 	<script> 
 		$(function() 
 		{
