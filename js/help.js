@@ -3,13 +3,13 @@ $(document).ready(function ()
     $('#units-help').bind('click', function(e) 
     {		
 	e.preventDefault();		
-	$.Zebra_Dialog('<strong>Units</strong>, will be displayed in either U.S. or Metric system units.');    
+	$.Zebra_Dialog('Select whether you want <strong>All Units</strong>, to be displayed in either the U.S. system of measurement or the Metric system.');    
     });
 
     $('#points-system-help').bind('click', function(e) 
     {		
 	e.preventDefault();	
-	$.Zebra_Dialog('Will you be using the Plus System or the Classic System?');    
+	$.Zebra_Dialog('You can select either the Weight Watchers Plus System or the Weight Watchers Classic System');    
     });
 
     $('#points-precision-help').bind('click', function(e) 

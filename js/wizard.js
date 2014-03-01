@@ -89,15 +89,28 @@ $(document).ready(function() {
 		if (this.value.length > max_length) this.value = this.value.substring(0, max_length);
     }	
 	
+	// Event handler for selecting point system
+	$("#select-point-system").bind('change', function(event, ui) 
+	{
+		$('#dpa-fixed, #dpa-calculated, #plus-pa-settings, #classic-pa-settings').hide();
+		//$('select[name="select-unit-system"]').find('option[value="0"]').attr("selected",true);
+		//$('#select-unit-system option:eq(0)').attr('selected','selected');
+		//$('select[name="selDPA"]').find('option[value="0"]').attr("selected",true);
+	});		
+	
 	// Event handler for selecting whether daily points allowance is calculated or entered manually
 	$("#selDPA").bind('change', function(event, ui) 
 	{				
 		$('#dpa-fixed, #dpa-calculated, #plus-pa-settings, #classic-pa-settings').hide();
-		var selectedIndex = $(this).val();
-		
-		if (selectedIndex == 1) $('#dpa-fixed').show();
-		else if (selectedIndex == 2) $('#dpa-calculated, #plus-pa-settings').show();
-		else if (selectedIndex == 3) $('#dpa-calculated, #classic-pa-settings').show();	
+		var dpaSelectedIndex = $(this).val();
+					
+		if (dpaSelectedIndex == 1) $('#dpa-fixed').show();
+		else if (dpaSelectedIndex == 2) 
+		{
+			var pointSystemSelectedIndex = $("#select-point-system").find(":selected").val();
+			if (pointSystemSelectedIndex == 1) $('#dpa-calculated, #plus-pa-settings').show();
+			else if (pointSystemSelectedIndex == 2) $('#dpa-calculated, #classic-pa-settings').show();	
+		}
 	});		
 	
 	// Plus system event handler for selecting gender 

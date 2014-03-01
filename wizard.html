@@ -36,8 +36,8 @@
 								Unit System                                   
 							</div>                                                                  
 							<div data-role="fieldcontain">                                     
-								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" data-native-menu="false">                                           
-									<option value="0" selected="selected">- Select -</option>                                          
+								<select id="select-unit-system" name="select-unit-system" data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" data-native-menu="false">                                           
+									<option value="0">- Select -</option>                                          
 									<option value="1">Standard (U.S.)</option>                                          
 									<option value="2">Metric</option>                                       
 								</select>											
@@ -55,7 +55,7 @@
 								Points System                                    
 							</div>
 			 				<div data-role="fieldcontain">
-							    <select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" data-native-menu="false">												
+							    <select id="select-point-system" data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" data-native-menu="false">												
 									<option value="0" selected="selected">- Select -</option>													
 									<option value="1">Plus System</option>													
 									<option value="2">Classic System</option>												
@@ -112,7 +112,7 @@
 					<tr>												                                                   
 						<td>                                                                                 
 							<div class="mobile_label">                                       
-								Enter your goal date (new DatePicker)                                   
+								Enter your weight goal date                                  
 							</div>                                                                  
 							<div data-role="fieldcontain">                                       
 								<input type="text" id="txtDP" />                                 
@@ -137,19 +137,18 @@
 					<tr>												
 						<td>							
 							<div>																 
-								<a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image" src="./img/information.jpg" /></a>							
+								<a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image_2_line" src="./img/information.jpg" /></a>							
 							</div>                          
 						</td>                                                     
 						<td>                                                                                 
 							<div class="mobile_label_2_line">                                       
 								How do you want to determine your Daily Point Allowance?                                    
 							</div>                                                                  
-							<div data-role="fieldcontain">                                       
+							<div data-role="fieldcontain" class="get_dpa">                                       
 								<select data-inline="false" data-mini="false" data-icon="arrow-d" data-iconpos="right" id="selDPA" data-native-menu="false">                                          
-									<option value="0" selected="selected"> - Select - </option>                                          
+									<option value="0"> - Select - </option>                                          
 									<option value="1"> Used a fixed value </option>                                          
-									<option value="2">Calculate the Value (Plus System)</option>       
-									<option value="3">Calculate the Value (Classic System)</option>    
+									<option value="2">Calculate the Value </option>         
 								</select>                                  
 							</div>  																   
 						</td>	
@@ -212,7 +211,6 @@
 					</table>               
 				</div>    
  
-				<div class="mobile_label">Enter Your Age and Weight (lb)</div> 
 				<div>                  
 					<table cellpadding="0" cellspacing="0">										
 						<col style="width:75px;" />		
@@ -223,7 +221,7 @@
 								<input id="txt-plus-age" type="text" max="999"/>                                 																   
 							</td>													                                                   
 							<td>                                                                               
-								<div class="mobile_label">Weight</div>                                                                                                      
+								<div class="mobile_label">Weight(lb)</div>                                                                                                      
 								<input id="txt-plus-weight" type="text" max="999"/>                                 															   
 							</td>	
 						</tr>					                            
@@ -254,7 +252,7 @@
 						<tr>												                                                   
 							<td>                                                                                 
 								<div id="btn-calculate-dpa-plus" data-role="button">Calculate</div>																   
-							</td>													                                                   	
+							</td>
 						</tr>					                            
 					</table>               
 				</div>
@@ -288,7 +286,6 @@
 			        </table>               
 		    	</div>  
 
-				<div class="mobile_label">Enter Your Age and Weight (lb)</div> 
 				<div>                  
 					<table cellpadding="0" cellspacing="0">										
 						<col style="width:100px;" />
@@ -308,7 +305,7 @@
 								</div>
 							</td>													                                                   
 							<td>                                                                              
-								 <div class="mobile_label">Weight</div>                                                                                                      
+								 <div class="mobile_label">Weight(lb)</div>                                                                                                      
 								 <input id="txt-classic-weight" type="text" max="999"/>                                  																   
 							</td>	
 						</tr>					                            
@@ -356,7 +353,7 @@
 						<tr>												                                                   
 							<td>                                                                                 
 								<div id="btn-calculate-dpa-classic" data-role="button">Calculate</div>																   
-							</td>													                                                   	
+							</td>								
 						</tr>					                            
 					</table>               
 				</div>
