@@ -105,17 +105,18 @@
 	        		</div>
 			</form>
             	</div>
- 	    	<!-- Daily Points Allowance Settings -->
+ 	    	<!-- Points Settings -->
        		<div data-role="content" id="page3-dpa-settings">	
 			<form id="frm-dpa-settings">
  				<table cellpadding="0" cellspacing="0">					
 					<col style="width:44px;" />					
-					<col style="width:auto;" />					  
+					<col style="width:auto;" />	
+					<!-- Select either the plus system or the classic system -->
 					<tr>
 						<td>
 							<div>																		 
-						    		<a href="javascript:void(0)" id="points-system-help"><img class="info_image" src="./img/information.jpg" /> </a>                                
-						    	</div>	 
+						    	<a href="javascript:void(0)" id="points-system-help"><img class="info_image" src="./img/information.jpg" /> </a>                                
+						    </div>	 
 						</td>
 						<td>
 							<div class="mobile_label">Points System</div>
@@ -128,10 +129,11 @@
 							</div>		  
 						</td>
 					</tr>   
+					<!-- Opt to manually enter DPA -->
 					<tr id="trEnterFixedDPA" style="display: none;">												
 						<td>							
 							<div>																 
-								<a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image" src="./img/information.jpg" /></a>							
+								<a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image_no_label" src="./img/information.jpg" /></a>							
 							</div>                          
 						</td>                                                     
 						<td>                                                                                                                                                  
@@ -142,31 +144,32 @@
 								</div>                                
 							</div>  																   
 						</td>	
-					</tr>                            
+					</tr> 
+					<!-- Manually enter DPA here -->
+					<tr>
+						<td>
+						
+						</td>
+						<td>
+							<div id="dpa-fixed" style="display: none;">                 
+								<label for="txt-fixed-dpa">Enter Your fixed DPA</label>                                                                     
+								<input type="text" data-mini="true" id="txt-fixed-dpa" />                      
+							</div>						
+						</td>
+					</tr>
+					<!-- Display the calculated DPA here -->
+					<tr>
+						<td>
+						
+						</td>
+						<td>
+							<h2 id="dpa-result" style="color: red">DPA = ...</h2>
+						</td>
+					</tr>					
 				</table> 
-				<div id="div-dpa-settings" style="display: none;">                            
-	        			<div id="dpa-fixed" style="display: none;">                
-						<table cellpadding="0" cellspacing="0">                      
-							<col style="width:100px;" />  
-							<tr>                                                                                                                             
-								<td>    
-									<label for="txt-fixed-dpa">Enter Your fixed DPA</label>                                                                     
-									<input type="text" data-mini="true" id="txt-fixed-dpa" />                      
-								</td>
-							</tr>
-						</table>  
-					</div>
-	       
+				<div id="div-dpa-settings" style="display: none;">                                   
 					<div id="dpa-calculated" style="display: none;">
-						<hr style="height:1px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;"/>                 
-						<table cellpadding="0" cellspacing="0">                      
-							<col style="width:200px;" />  
-							<tr>                                                                                                                             
-								<td>    
-									<h2 id="dpa-result" style="color: red">DPA = ...</h2>                     
-								</td>
-							</tr>
-						</table>          
+						<hr style="height:1px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;"/>                          
 						<table cellpadding="0" cellspacing="0">										
 							<col style="width: 200px;" />					
 							<tr>												                                                   

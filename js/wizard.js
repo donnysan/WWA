@@ -16,78 +16,80 @@ $(document).ready(function() {
 		setHeaderText(toPage, true);
 	}
 
-    	// Page 1 > Page 2
-    	$(page1Id + ' a.next').on('click', function () 
-    	{
-		if ($("#frmUnitSettings").valid())		
-        		UpdatePage(page1Id, page2Id);
-    	});
+	// Page 1 > Page 2
+	$(page1Id + ' a.next').on('click', function () 
+	{
+	if ($("#frmUnitSettings").valid())		
+			UpdatePage(page1Id, page2Id);
+	});
 
-    	// Page 2 > Page 3
-    	$(page2Id + ' a.next').on('click', function () 
-    	{
-		if ($("#frmWeightGoalSettings").valid())
-		        UpdatePage(page2Id, page3Id);	
-    	});
+	// Page 2 > Page 3
+	$(page2Id + ' a.next').on('click', function () 
+	{
+	if ($("#frmWeightGoalSettings").valid())
+			UpdatePage(page2Id, page3Id);	
+	});
 
-	// Page 3 > Page 4
-    	$(page3Id + ' a.next').on('click', function () 
-    	{
-		if ($("#frm-dpa-settings").valid()) 
-			UpdatePage( page3Id, page4Id );	
-    	});
+// Page 3 > Page 4
+	$(page3Id + ' a.next').on('click', function () 
+	{
+	if ($("#frm-dpa-settings").valid()) 
+		UpdatePage( page3Id, page4Id );	
+	});
 
-    	// Page 4 > Finish  
-    	$(page4Id + ' a.finish').on('click', function () 
-    	{
-		if ($("#frmActivitySettings").valid()) window.location.replace("index.html");	
-    	});
+	// Page 4 > Finish  
+	$(page4Id + ' a.finish').on('click', function () 
+	{
+	if ($("#frmActivitySettings").valid()) window.location.replace("index.html");	
+	});
 
-    	// Page 4  > Page 3
-    	$(page4Id + ' a.prev').on('click', function () 
-    	{				
-		UpdatePage(page4Id, page3Id)	
-    	});
+	// Page 4  > Page 3
+	$(page4Id + ' a.prev').on('click', function () 
+	{				
+	UpdatePage(page4Id, page3Id)	
+	});
 
-    	// ( Page 3 > Page 2
-    	$(page3Id + ' a.prev').on('click', function () 
-    	{
-        	UpdatePage(page3Id, page2Id)
-    	});
+	// ( Page 3 > Page 2
+	$(page3Id + ' a.prev').on('click', function () 
+	{
+		UpdatePage(page3Id, page2Id)
+	});
 
-    	// Page 2 > Page 1
-    	$(page2Id + ' a.prev').on('click', function () 
-    	{
-        	UpdatePage(page2Id, page1Id);
-    	});
- 
-    	// Initialize numeric keypad data input for text boxes
-    	$('#goal-weight, #txt-fixed-dpa').keypad(
-    	{
+	// Page 2 > Page 1
+	$(page2Id + ' a.prev').on('click', function () 
+	{
+		UpdatePage(page2Id, page1Id);
+	});
+
+	// Initialize numeric keypad data input for text boxes
+	$('#goal-weight, #txt-fixed-dpa').keypad(
+	{
 		prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
 		onKeypress: KeyPress,
 		layout: ['123' + $.keypad.CLOSE, '456' + $.keypad.BACK, '789' + $.keypad.CLEAR, '0']
-    	});
-    	$('#txt-age, #txt-weight, #txt-height-ft, #txt-height-in').keypad(
-    	{
+	});
+	$('#txt-age, #txt-weight, #txt-height-ft, #txt-height-in').keypad(
+	{
 		prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
 		onKeypress: KeyPress,
 		onClose: CloseKeypadPanel,
 		layout: ['123' + $.keypad.CLOSE, '456' + $.keypad.BACK, '789' + $.keypad.CLEAR, '0']
-   	 });
+	});
 
-    	// This function enforces max length constraint on text boxes that use numeric keypad data input
-   	function KeyPress() 
-    	{ 		
+	// This function enforces max length constraint on text boxes that use numeric keypad data input
+	function KeyPress() 
+	{ 		
 		// Workaround to assign max length constraint to field.  Max attribute is being used for an inintended purpose.
 		// Whatever the string length is of the assigned this.max.length value is the maximum allowable field length.
 		var max_length = this.max != '' ? this.max.length : 9007199254740992;
 
 		if (this.value.length > max_length) this.value = this.value.substring(0, max_length);
-    	}	
-	
-   	function CloseKeypadPanel()
-    	{
+		
+		if (this.id == '') $('#dpa-result').text('Your fixed DPA is ' + this.value);
+	}	
+
+	function CloseKeypadPanel()
+	{
 		CalculateDPA();
 	}			
 
@@ -119,7 +121,9 @@ $(document).ready(function() {
 			{
 				$('#dpa-calculated').show();
 				$('#dpa-fixed').hide();
-			}
+				
+				CalculateDPA();
+			}		
 		}
 	});
 
@@ -160,7 +164,11 @@ $(document).ready(function() {
 		var pointSystemSelectedIndex = $("#select-point-system").find(":selected").val();
 
 		// Validate input
-		if (!DPAInputIsValid(pointSystemSelectedIndex, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)) return;
+		if (!DPAInputIsValid(pointSystemSelectedIndex, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)) 
+		{
+			$('#dpa-result').text('To get you DPA, please enter missing values');
+			return;
+		}
 
 		age = parseInt(age);
 		weight = parseInt(weight);		
@@ -170,31 +178,31 @@ $(document).ready(function() {
 		if (pointSystemSelectedIndex == 1)
 		{
 			if (selected_gender == 2 && selected_breastfeeding_status >= 1) selected_gender = selected_breastfeeding_status;
-			dpa = CalculateClassicDPA(selected_gender, age, weight, height, selected_activity_level);			
+			dpa = CalculateClassicDPA(selected_gender, age, weight, height, selected_activity_level);
+			if (dpa != 0) $('#dpa-result').text('Your Classic DPA = ' + dpa);	
 		}
 		else if (pointSystemSelectedIndex == 2)
 		{
 			if (selected_gender == 1) dpa = CalculateWWPlusDailyTargetScoreForMale(age, weight, height);
 			else if (selected_gender == 2) dpa = CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, selected_breastfeeding_status);
+			if (dpa != 0) $('#dpa-result').text('Your Plus DPA = ' + dpa);
 		}
-		if (dpa != 0) $('#dpa-result').text('Classic DPA = ' + dpa);
 	}
 
 	function DPAInputIsValid(pointSystem, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)
 	{
 		if (selected_gender == '' || 
-		    age == '' ||
-		    weight == '' ||
-		    feet == '' ||
-		    inches == '') return false;
+			age == '' ||
+			weight == '' ||
+			feet == '' ||
+			inches == '') return false;
 
 		if (selected_gender == 2 && selected_breastfeeding_status == 0) return false;	
 
-		if (selected_activity_level == '' && pointSystem == 1) return false;
+		if (selected_activity_level == '') return false;
 
 		return true;			
 	}
-	
 });
 	
 $(document).on('pagecreate',function()
@@ -243,7 +251,7 @@ function setHeaderText(pageId, isWizard)
 
 	if (pageId == '#page1-unit-settings') $(wizardHeaderId).text('Unit Settings'); 
 	else if (pageId == '#page2-weight-goal-settings') $(wizardHeaderId).text('Weight Goal Settings'); 
-	else if (pageId == '#page3-dpa-settings') $(wizardHeaderId).text('Daily Points Allowance Settings'); 
+	else if (pageId == '#page3-dpa-settings') $(wizardHeaderId).text('Points Settings'); 
 	else if (pageId == '#page3-points-allowance-plus-settings') $(wizardHeaderId).text('Daily Points Allowance Plus Settings'); 
 	else if (pageId == '#page3-points-allowance-classic-settings') $(wizardHeaderId).text('Daily Points Allowance Classic Settings'); 
 	else if (pageId == '#page4-actvity-settings') $(wizardHeaderId).text('Activity Settings'); 
