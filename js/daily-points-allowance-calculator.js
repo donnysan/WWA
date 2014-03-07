@@ -105,22 +105,17 @@ function CalculateClassicDPA(gender, age, weight, height, activity_level)
 	}	
 
 	// Add points for age
-	if (age == AGE_BETWEEN_17_AND_26) dpa += 4;
-	else if (age == AGE_BETWEEN_27_AND_37) dpa += 3;
-	else if (age == AGE_BETWEEN_38_AND_47) dpa += 2;
-	else if (age == AGE_BETWEEN_48_AND_58 || age == AGE_OVER_58) dpa += 1;
-	else
-	{
-		alert('Age ' + age + ' is invalid');
-		return;
-	}
+	if (age <= 26) dpa += 4;
+	else if (age >= 27 && age <= 37) dpa += 3;
+	else if (age >= 38 && age <= 47) dpa += 2;
+	else dpa += 1;
 
 	// Add points for weight
 	dpa += parseInt(weight.toString().substring(0, 2));
 
 	// Add points for height
-	if (height == HEIGHT_BETWEEN_5_1_AND_5_10) dpa += 1;
-	else if (height == HEIGHT_OVER_5_10) dpa += 2;
+	if (height >= 61 && height <= 70) dpa += 1;
+	else if (height > 70) dpa += 2;
 
 	// Add points for activity level
 	if (activity_level == OCCASIONALLY_SITTING) dpa += 2;

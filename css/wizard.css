@@ -53,23 +53,14 @@
     white-space: normal;
 }
 
-.previous_button 
-{
-	margin:0 10px 0px 0px;
-        width: 125px;	
-}
-
-.next_button 
-{
-	width: 90px;	
-	margin:0 10px 0px 0px;
-}
-
 .step_button 
 {
 	width: 60px;	
 	text-decoration: none;
 	color: #000;
 }
+
+
+
 
 
