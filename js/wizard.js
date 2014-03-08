@@ -8,45 +8,48 @@ $(document).ready(function() {
 	var page3Id = '#page3-dpa-settings';
 	var page4Id = '#page4-actvity-settings';
 
+	var CLASSIC_POINTS_SYSTEM = 1;
+	var PLUS_POINTS_SYSTEM = 2;
+
 	// Helper function for hiding the previously selected page and showing the currently selected page
 	function UpdatePage(fromPage, toPage)
 	{
         	$(fromPage).hide();
         	$(toPage).show();		
-		setHeaderText(toPage, true);
+			setHeaderText(toPage, true);
 	}
 
 	// Page 1 > Page 2
 	$(page1Id + ' a.next').on('click', function () 
 	{
-	if ($("#frmUnitSettings").valid())		
+		if ($("#frmUnitSettings").valid())		
 			UpdatePage(page1Id, page2Id);
 	});
 
 	// Page 2 > Page 3
 	$(page2Id + ' a.next').on('click', function () 
 	{
-	if ($("#frmWeightGoalSettings").valid())
+		if ($("#frmWeightGoalSettings").valid())
 			UpdatePage(page2Id, page3Id);	
 	});
 
-// Page 3 > Page 4
+	// Page 3 > Page 4
 	$(page3Id + ' a.next').on('click', function () 
 	{
-	if ($("#frm-dpa-settings").valid()) 
-		UpdatePage( page3Id, page4Id );	
+		if ($("#frm-dpa-settings").valid()) 
+			UpdatePage( page3Id, page4Id );	
 	});
 
 	// Page 4 > Finish  
 	$(page4Id + ' a.finish').on('click', function () 
 	{
-	if ($("#frmActivitySettings").valid()) window.location.replace("index.html");	
+		if ($("#frmActivitySettings").valid()) window.location.replace("index.html");	
 	});
 
 	// Page 4  > Page 3
 	$(page4Id + ' a.prev').on('click', function () 
 	{				
-	UpdatePage(page4Id, page3Id)	
+		UpdatePage(page4Id, page3Id)	
 	});
 
 	// ( Page 3 > Page 2
@@ -84,8 +87,6 @@ $(document).ready(function() {
 		var max_length = this.max != '' ? this.max.length : 9007199254740992;
 
 		if (this.value.length > max_length) this.value = this.value.substring(0, max_length);
-		
-		if (this.id == '') $('#dpa-result').text('Your fixed DPA is ' + this.value);
 	}	
 
 	function CloseKeypadPanel()
@@ -93,37 +94,44 @@ $(document).ready(function() {
 		CalculateDPA();
 	}			
 
+
+	function ShowHideDPAFields()
+	{
+		var useFixedValue = $("#ck-fixed-value").is(':checked');
+		if(useFixedValue) 
+		{
+			$('#div-dpa-fixed-fields').show();
+			$('#div-calculated-dpa, #div-dpa-calculation-fields').hide();
+		}
+		else
+		{
+			$('#div-calculated-dpa, #div-dpa-calculation-fields').show();
+			$('#div-dpa-fixed-fields').hide();
+				
+			CalculateDPA();
+		}
+	}
+
 	// Event handler for selecting whether daily points plus allowance is calculated or entered manually
 	$("#ck-fixed-value").bind('change', function(event, ui) 
 	{
-		$('#dpa-fixed, #dpa-calculated').hide();
-
-		if($("#ck-fixed-value").is(':checked')) $('#dpa-fixed').show();
-		else $('#dpa-calculated').show();		
+		// alert('check change');
+		ShowHideDPAFields();	
 	});
 
 	// Plus system event handler for selecting point system
 	$("#select-point-system").bind('change', function(event, ui) 
 	{	
-		var selectedIndex = $(this).val();
-		var useFixedValue = $("#ck-fixed-value").is(':checked');
+		var selectedPointsSystem = $(this).val();
 		// The Classic System or the Plus System was selected
-		if (selectedIndex >= 1)
+		if (selectedPointsSystem == CLASSIC_POINTS_SYSTEM || selectedPointsSystem == PLUS_POINTS_SYSTEM)
 		{
-			$('#div-dpa-settings, #trEnterFixedDPA').show()
+			// This setting only applies to the classic points system
+			if (selectedPointsSystem == CLASSIC_POINTS_SYSTEM) $('#div-activity-level').show();
+			else if (selectedPointsSystem == PLUS_POINTS_SYSTEM) $('#div-activity-level').hide();
 
-			if(useFixedValue) 
-			{
-				$('#dpa-fixed').show();
-				('#dpa-calculated').hide();
-			}
-			else
-			{
-				$('#dpa-calculated').show();
-				$('#dpa-fixed').hide();
-				
-				CalculateDPA();
-			}		
+			$('#tr-select-fixed-dpa').show();
+			ShowHideDPAFields();	
 		}
 	});
 
@@ -133,8 +141,8 @@ $(document).ready(function() {
 		var selectedIndex = $(this).val();
 		
 		// If 'Female' is selected show the Breastfeeding Drop Down List
-		if (selectedIndex == 0 || selectedIndex == 1) $('#div-breastfeeding-mom').hide();
-		else if (selectedIndex == 2) $('#div-breastfeeding-mom').show();
+		//if (selectedIndex == 0 || selectedIndex == 1) $('#div-breastfeeding-mom').hide();
+		//else if (selectedIndex == 2) $('#div-breastfeeding-mom').show();
 		
 		CalculateDPA();		
 	});
@@ -158,38 +166,55 @@ $(document).ready(function() {
 		var weight = $("#txt-weight").val();
 		var feet = $("#txt-height-ft").val();
 		var inches = $("#txt-height-in").val();
-		var selected_breastfeeding_status = $("#select-breastfeeding").val();	
+		//var selected_breastfeeding_status = $("#select-breastfeeding").val();	
 		var selected_activity_level = $("#select-activity-level").val()
 
-		var pointSystemSelectedIndex = $("#select-point-system").find(":selected").val();
+		var selectedPointsSystem = $("#select-point-system").find(":selected").val();
 
 		// Validate input
-		if (!DPAInputIsValid(pointSystemSelectedIndex, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)) 
+		// if (!DPAInputIsValid(selectedPointsSystem, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)) 
+		if (!DPAInputIsValid(selectedPointsSystem, selected_gender, age, weight, feet, inches, selected_activity_level)) 
 		{
-			$('#dpa-result').text('To get you DPA, please enter missing values');
+			$('#p-calculated-dpa').text('To calculate you DPA, please enter missing values');
+			$('#hf-calculated-dpa').val('');
+			$('#h3-calculated-dpa').text('Your calculated DPA = ');
 			return;
 		}
-
+		
 		age = parseInt(age);
 		weight = parseInt(weight);		
 		var height = parseInt(feet) * 12 + parseInt(inches);	
 
 		var dpa = 0;		
-		if (pointSystemSelectedIndex == 1)
+		if (selectedPointsSystem == CLASSIC_POINTS_SYSTEM)
 		{
-			if (selected_gender == 2 && selected_breastfeeding_status >= 1) selected_gender = selected_breastfeeding_status;
+			// if (selected_gender == 2 && selected_breastfeeding_status >= 1) selected_gender = selected_breastfeeding_status;
 			dpa = CalculateClassicDPA(selected_gender, age, weight, height, selected_activity_level);
-			if (dpa != 0) $('#dpa-result').text('Your Classic DPA = ' + dpa);	
+			if (dpa != 0) 
+			{
+				$('#hf-calculated-dpa').val(dpa);
+				$('#h3-calculated-dpa').text('Your calculated DPA = ' + dpa);
+			}
+
+			$('#p-calculated-dpa').text('');	
 		}
-		else if (pointSystemSelectedIndex == 2)
+		else if (selectedPointsSystem == PLUS_POINTS_SYSTEM)
 		{
 			if (selected_gender == 1) dpa = CalculateWWPlusDailyTargetScoreForMale(age, weight, height);
-			else if (selected_gender == 2) dpa = CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, selected_breastfeeding_status);
-			if (dpa != 0) $('#dpa-result').text('Your Plus DPA = ' + dpa);
-		}
+			else if (selected_gender >= 2) dpa = CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, selected_gender);
+			//else if (selected_gender == 2) dpa = CalculateWWPlusDailyTargetScoreForFemale(age, weight, height, selected_breastfeeding_status);
+			if (dpa != 0) 
+			{
+				$('#hf-calculated-dpa').val(dpa);
+				$('#h3-calculated-dpa').text('Your calculated DPA = ' + dpa);
+			}
+
+			$('#p-calculated-dpa').text('');
+		}		
 	}
 
-	function DPAInputIsValid(pointSystem, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)
+	// function DPAInputIsValid(pointSystem, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)
+	function DPAInputIsValid(pointSystem, selected_gender, age, weight, feet, inches, selected_activity_level)
 	{
 		if (selected_gender == '' || 
 			age == '' ||
@@ -197,9 +222,9 @@ $(document).ready(function() {
 			feet == '' ||
 			inches == '') return false;
 
-		if (selected_gender == 2 && selected_breastfeeding_status == 0) return false;	
+		// if (selected_gender == 2 && selected_breastfeeding_status == 0) return false;	
 
-		if (selected_activity_level == '') return false;
+		if (pointSystem == CLASSIC_POINTS_SYSTEM && selected_activity_level == '') return false;
 
 		return true;			
 	}

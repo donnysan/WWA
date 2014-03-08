@@ -115,22 +115,20 @@
 					<tr>
 						<td>
 							<div>																		 
-						    	<a href="javascript:void(0)" id="points-system-help"><img class="info_image" src="./img/information.jpg" /> </a>                                
-						    </div>	 
+						    		<a href="javascript:void(0)" id="points-system-help"><img class="info_image_no_label" src="./img/information.jpg" /> </a>                                
+						    	</div>	 
 						</td>
 						<td>
-							<div class="mobile_label">Points System</div>
-			 					<div data-role="fieldcontain">
+			 				<div data-role="fieldcontain">
 							    	<select id="select-point-system" name="select-point-system" data-inline="false" data-mini="true" data-icon="arrow-d" data-iconpos="right" data-native-menu="false" title="Please select point system." required>												
-									<option value="">- Select -</option>
+									<option value="">- Select Point System -</option>
 									<option value="1">US - Classic System</option>
 									<option value="2">US - Plus System</option>																																																								
 								</select>										
 							</div>		  
 						</td>
 					</tr>   
-					<!-- Opt to manually enter DPA -->
-					<tr id="trEnterFixedDPA" style="display: none;">												
+					<tr id="tr-select-fixed-dpa" style="display: none;">												
 						<td>							
 							<div>																 
 								<a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image_no_label" src="./img/information.jpg" /></a>							
@@ -140,50 +138,83 @@
 							<div data-role="fieldcontain" class="get_dpa">                                       
 								<div>
 									<input type="checkbox" id="ck-fixed-value" name="ck-fixed-value" data-mini="true" value="0">          
-									<label for="ck-fixed-value">Enter fixed DPA</label>  		
+									<label for="ck-fixed-value">Enter fixed Daily Points Allowance (DPA)</label>  		
 								</div>                                
 							</div>  																   
 						</td>	
 					</tr> 
-					<!-- Manually enter DPA here -->
-					<tr>
-						<td>
+				</table>
+				<div id="div-calculated-dpa" style="display: none;">
+ 					<table cellpadding="0" cellspacing="0">					
+						<col style="width:44px;" />					
+						<col style="width:auto;" />	
+						<!-- Select either the plus system or the classic system -->
+						<tr>
+							<td></td>
+							<td>
+			 					<div data-role="fieldcontain" style="width: 300px">
+									<h3 id="h3-calculated-dpa" style="color: green">Your calculated DPA: </h3>                                                                    
+									<input type="hidden" id="hf-calculated-dpa">  									
+								</div>		  
+							</td>
+						</tr> 
+					</table>  
+					<table cellpadding="0" cellspacing="0">				
+						<col style="width:44px;" />					
+						<col style="width:auto;" />	
+						<tr>						
+							<td>
 						
-						</td>
-						<td>
-							<div id="dpa-fixed" style="display: none;">                 
-								<label for="txt-fixed-dpa">Enter Your fixed DPA</label>                                                                     
-								<input type="text" data-mini="true" id="txt-fixed-dpa" />                      
-							</div>						
-						</td>
-					</tr>
-					<!-- Display the calculated DPA here -->
-					<tr>
-						<td>
-						
-						</td>
-						<td>
-							<p id="dpa-result" style="color: red">To get you DPA, please enter calculation values</p>
-						</td>
-					</tr>					
-				</table> 
-				<div id="div-dpa-settings" style="display: none;">                                   
-					<div id="dpa-calculated" style="display: none;">
-						<hr style="height:1px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;"/>                          
-						<table cellpadding="0" cellspacing="0">										
-							<col style="width: 200px;" />					
-							<tr>												                                                   
-								<td>                                                                                 
-									<div class="mobile_label">Select Your Gender</div>                                                                  
-									<div data-role="fieldcontain">                                       
-										<select id="select-gender" name="select-gender" data-inline="false" data-mini="true" data-icon="arrow-d" data-iconpos="right" data-native-menu="false" title="Please select gender." required>                                          
-											<option value=""> - Select - </option>  
-											<option value="1">Male</option>             
-											<option value="2">Female</option>  
-										</select>                                  
-									</div>  																   
-								</td>	
-							</tr>	
+							</td>
+							<td>
+								<p id="p-calculated-dpa" style="color: red">To calculate you DPA, please enter the values below.</p>
+							</td>
+						</tr>						
+					</table> 
+     				</div>
+				<div id="div-dpa-fixed-fields" style="display: none;">
+					<!-- Manually enter DPA here -->         
+ 					<table cellpadding="0" cellspacing="0">					
+						<col style="width:44px;" />					
+						<col style="width:auto;" />	
+						<!-- Select either the plus system or the classic system -->
+						<tr>
+							<td></td>
+							<td>
+			 					<div data-role="fieldcontain" style="width: 125px">
+									<label for="txt-fixed-dpa">Fixed DPA</label>                                                                     
+									<input type="text" id="txt-fixed-dpa" name="txt-fixed-dpa" data-mini="true" title="Please enter fixed DPA." required />  									
+								</div>		  
+							</td>
+						</tr> 
+					</table>   
+				</div>
+
+				<div id="div-dpa-calculation-fields" style="display: none;">                                   
+					<hr style="height:1px; background-color:#ccc; border:0; margin-top:12px; margin-bottom:12px;"/>   
+                    
+					<table cellpadding="0" cellspacing="0">		
+						<col style="width:44px;" />								
+						<col style="width: 200px;" />					
+						<tr>	
+							<td>
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image_no_label" src="./img/information.jpg" /></a>							
+								</div>
+							</td>				                                                   
+							<td>                                                                                                                                                  
+								<div data-role="fieldcontain">                                       
+									<select id="select-gender" name="select-gender" data-inline="false" data-mini="true" data-icon="arrow-d" data-iconpos="right" data-native-menu="false" title="Please select gender." required>                                          
+										<option value=""> - Select Your Gender - </option>  
+										<option value="1">Male</option>             
+										<option value="2">Female - Not Breastfeeding</option>  
+										<option value="3">Female - Supplementally Breastfeeding</option>  
+										<option value="4">Female - Exclusively Breastfeeding</option>
+									</select>                                  
+								</div>  																   
+							</td>	
+						</tr>	
+<!--
 						<tr>												                                                   
 							<td>           
 								<div id="div-breastfeeding-mom" style="display: none;">                                                                      
@@ -198,46 +229,67 @@
 									</div>  
 								</div> 																   
 							</td>	
-							</tr>					                            
-						</table>                 
-						<table cellpadding="0" cellspacing="0">										
+						</tr>	
+-->				                            
+					</table>                 
+					<table cellpadding="0" cellspacing="0">	
+						<col style="width:44px;" />				
+						<col style="width:75px;" />		
+						<col style="width:75px;" />	
+						<tr>	
+							<td>
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+								</div>
+							</td>											                                                   
+							<td>                                                                                 
+								<div class="mobile_label">Age</div>                                                                                                     
+								<input id="txt-age" name="txt-age" data-mini="true" type="text" max="999" title="Please enter age." required />                                 																   
+							</td>													                                                   
+							<td>                                                                               
+								<div class="mobile_label">Weight(lb)</div>                                                                                                      
+								<input id="txt-weight" data-mini="true" type="text" max="999" title="Please enter weight." required />                                 															   
+							</td>	
+						</tr>					                            
+					</table>               								
+					<div>         
+						         
+						<table cellpadding="0" cellspacing="0">	
+							<col style="width:44px;" />	
 							<col style="width:75px;" />		
 							<col style="width:75px;" />	
-							<tr>												                                                   
-								<td>                                                                                 
-									<div class="mobile_label">Age</div>                                                                                                     
-									<input id="txt-age" name="txt-age" data-mini="true" type="text" max="999" title="Please enter age." required />                                 																   
+							<tr>	
+								<td>
+									<div>																 
+										<a href="javascript:void(0)" id=""><img class="info_image_no_label" src="./img/information.jpg" /></a>							
+									</div>
+								</td>				                                                   
+								<td>                
+									<div class="mobile_label">Height (ft)</div>                                                                                                                               
+									<input type="text" id="txt-height-ft" name="txt-height-ft" data-mini="true" max="99" title="Please enter height." required/>																   
 								</td>													                                                   
-								<td>                                                                               
-									<div class="mobile_label">Weight(lb)</div>                                                                                                      
-									<input id="txt-weight" data-mini="true" type="text" max="999" title="Please enter weight." required />                                 															   
+								<td>             
+									<div class="mobile_label">Height (in)</div>                                                                                                                                     
+									<input type="text" id="txt-height-in" name="txt-height-in" data-mini="true" max="99" title="Please enter height." required/> 																   
 								</td>	
 							</tr>					                            
-						</table>               				
-						<div class="mobile_label">Enter Your Height (ft' in")</div> 
-						<div>                  
-							<table cellpadding="0" cellspacing="0">									
-								<col style="width:75px;" />		
-								<col style="width:75px;" />	
-								<tr>												                                                   
-									<td>                                                                                                                                               
-										<input type="text" id="txt-height-ft" name="txt-height-ft" data-mini="true" max="99" title="Please enter height." required/>																   
-									</td>													                                                   
-									<td>                                                                                                                                                  
-										<input type="text" id="txt-height-in" name="txt-height-in" data-mini="true" max="99" title="Please enter height." required/> 																   
-									</td>	
-								</tr>					                            
-							</table>               
-						</div>	
+						</table>               
+					</div>	
 
-						<table cellpadding="0" cellspacing="0">										
+					<div id="div-activity-level" style="display: none;">
+						<table cellpadding="0" cellspacing="0">	
+							<col style="width:44px;" />									
 							<col style="width: 200px" />						
-							<tr>												                                                   
+							<tr>	
+								<td>
+									<div>																 
+										<a href="javascript:void(0)" id=""><img class="info_image_no_label" src="./img/information.jpg" /></a>							
+									</div>
+								</td>											                                                   
 								<td>                                                                             
-									<div class="mobile_label">Select Your Daily Routine</div> 
 									<div data-role="fieldcontain">  
 										<select id="select-activity-level" name="select-activity-level" data-inline="false" data-mini="true" data-icon="arrow-d" data-iconpos="right" data-native-menu="false" title="Please select activity level." required>                                                      
-											<option value="">- Select -</option>                  
+											<option value="">- Select Your Activity Level -</option>                  
 											<option value="1">Mostly Sitting</option>                  
 											<option value="2">Occasionally Sitting</option>                
 											<option value="3">Mostly Walking</option>                
@@ -246,8 +298,8 @@
 									</div>
 								</td>	
 							</tr>					                            
-						</table>   			
-            				</div> 
+						</table>   	
+					</div>		
 				</div>
 
 	                    	<div data-role="controlgroup" data-type="horizontal">
@@ -320,7 +372,7 @@
 			        <div data-role="controlgroup" data-type="horizontal">
 			        	<a href="#" data-role="button" data-theme="b" class="prev" style="width: 60px;" data-mini="true">< Prev</a>		    		    
 				        <a href="#" data-role="button" data-theme="f" id="step-4" data-mini="true" class="step_button">4 of 4</a>
-				        <a href="#" data-role="button" data-theme="e" class="finish" style="width: 60px;" data-mini="true">Finish</a>
+				        <a href="#" data-role="button" data-theme="e" class="finish" style="width: 60px;" data-mini="true">Done</a>
 			        </div>
 		      </form>
 	       </div>
