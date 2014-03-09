@@ -39,7 +39,8 @@ $(document).ready(function() {
 	// Page 4 > Finish  
 	$(page4Id + ' a.finish').on('click', function () 
 	{
-		//if ($("#frmActivitySettings").valid()) window.location.replace("index.html");	
+		//if ($("#frmActivitySettings").valid()) 
+			window.history.back();
 	});
 
 	// Page 4  > Page 3
