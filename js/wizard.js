@@ -39,7 +39,7 @@ $(document).ready(function() {
 	// Page 4 > Finish  
 	$(page4Id + ' a.finish').on('click', function () 
 	{
-		if ($("#frmActivitySettings").valid()) window.location.replace("index.html");	
+		//if ($("#frmActivitySettings").valid()) window.location.replace("index.html");	
 	});
 
 	// Page 4  > Page 3
@@ -246,16 +246,16 @@ $(document).on('pageshow', '#wizard-page, #home-page', function (event, ui)
 
     	if (args != '') 
     	{
-		var kvp0 = args[0].split('=');
-		var id = "#" + kvp0[1];
-		var kvp1 = args[1].split('=');
-		var show_buttons = kvp1[1] == 'true';	
-		showDiv(id, show_buttons);
+			var kvp0 = args[0].split('=');
+			var id = "#" + kvp0[1];
+			var kvp1 = args[1].split('=');
+			var show_buttons = kvp1[1] == 'true';	
+			showDiv(id, show_buttons);
     	}
    	else 
 	{
-        	showDiv("#page1-unit-settings", true);
-    	}
+        showDiv("#page1-unit-settings", true);
+    }
 });	
 		
 function showDiv(pageId, show_buttons)
@@ -266,12 +266,12 @@ function showDiv(pageId, show_buttons)
     	// Show specified div
     	$(pageId).show();
 
-	// Set Header Text
-	setHeaderText(pageId, show_buttons);
+		// Set Header Text
+		setHeaderText(pageId, show_buttons);
 			
-	// Show or Hide back button
-	if (show_buttons) $('#wizard-back-button').hide();
-	else $('#wizard-back-button').show();  
+		// Show or Hide back button
+		if (show_buttons) $('#wizard-back-button').hide();
+		else $('#wizard-back-button').show();  
 }
 
 function setHeaderText(pageId, isWizard)
