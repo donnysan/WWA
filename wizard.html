@@ -107,7 +107,7 @@
             	</div>
  	    	<!-- Points Settings -->
        		<div data-role="content" id="page3-dpa-settings">	
-			<form id="frm-dpa-settings">
+			<form id="frm-point-settings">
  				<table cellpadding="0" cellspacing="0">					
 					<col style="width:44px;" />					
 					<col style="width:auto;" />	
@@ -138,7 +138,7 @@
 							<div data-role="fieldcontain" class="get_dpa">                                       
 								<div>
 									<input type="checkbox" id="ck-fixed-value" name="ck-fixed-value" data-mini="true" value="0">          
-									<label for="ck-fixed-value">Enter fixed Daily Points Allowance (DPA)</label>  		
+									<label for="ck-fixed-value">Use fixed Daily Points Allowance (DPA)</label>  		
 								</div>                                
 							</div>  																   
 						</td>	
@@ -147,30 +147,18 @@
 				<div id="div-calculated-dpa" style="display: none;">
  					<table cellpadding="0" cellspacing="0">					
 						<col style="width:44px;" />					
-						<col style="width:auto;" />	
+						<col style="width:100px;" />	
 						<!-- Select either the plus system or the classic system -->
 						<tr>
 							<td></td>
 							<td>
 			 					<div data-role="fieldcontain" style="width: 300px">
-									<h3 id="h3-calculated-dpa" style="color: green">Your calculated DPA: </h3>                                                                    
+									<p id="h3-calculated-dpa" style="color: green">Your Daily Points Allowance... </p>                                                                    
 									<input type="hidden" id="hf-calculated-dpa">  									
 								</div>		  
 							</td>
 						</tr> 
 					</table>  
-					<table cellpadding="0" cellspacing="0">				
-						<col style="width:44px;" />					
-						<col style="width:auto;" />	
-						<tr>						
-							<td>
-						
-							</td>
-							<td>
-								<p id="p-calculated-dpa" style="color: red">To calculate you DPA, please enter the values below.</p>
-							</td>
-						</tr>						
-					</table> 
      				</div>
 				<div id="div-dpa-fixed-fields" style="display: none;">
 					<!-- Manually enter DPA here -->         
@@ -182,7 +170,7 @@
 							<td></td>
 							<td>
 			 					<div data-role="fieldcontain" style="width: 125px">
-									<label for="txt-fixed-dpa">Fixed DPA</label>                                                                     
+									<label for="txt-fixed-dpa">Your Daily Points Allowance</label>                                                                     
 									<input type="text" id="txt-fixed-dpa" name="txt-fixed-dpa" data-mini="true" title="Please enter fixed DPA." required />  									
 								</div>		  
 							</td>
@@ -261,7 +249,7 @@
 							<tr>	
 								<td>
 									<div>																 
-										<a href="javascript:void(0)" id=""><img class="info_image_no_label" src="./img/information.jpg" /></a>							
+										<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
 									</div>
 								</td>				                                                   
 								<td>                
