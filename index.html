@@ -7,6 +7,13 @@
 	
 	<link href="./css/jquery.mobile-1.3.2.min.css" rel="stylesheet">
 	<link href="./css/codiqa.ext.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./css/WWA.css" type="text/css" />
+	<link rel="stylesheet" href="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.css" type="text/css">	
+	<link rel="stylesheet" href="./Plugins/jquery-validation-1.11.1/demo/css/screen.css">
+
+	<!-- These javascript must be included in the head tag rather than the body tag or else the validation plug-in fucks up the whole page -->
+	<script src="./Plugins/jquery-validation-1.11.1/lib/jquery.js"></script>
+	<script src="./Plugins/jquery-validation-1.11.1/dist/jquery.validate.js"></script>
 </head>
 <body>
 	<!-- Start of Landing page -->
@@ -17,16 +24,16 @@
 		<div data-role="content">    
 			<div class="ui-grid-b">
 				<div class="ui-block-a" style="text-align:center;">
-					<a href="#" style="text-decoration: none;" data-transition="slide" rel="external"><img src="./img/Diary.png" alt="My Daily<br>Diary"><p>My Daily<br>Diary</p></a>
+					<a href="#" style="text-decoration: none;" data-transition="slide" rel="external"><img src="./img/diary.jpg" alt="My Daily<br>Diary"><p>My Daily<br>Diary</p></a>
 				</div>
 				<div class="ui-block-b" style="text-align:center;">
-					<a href="#" style="text-decoration: none;"><img src="./img/Calculator.png" alt="Points<br>Calculator"><p>Points<br>Calculator</p</a>
+					<a href="#calculator-page" style="text-decoration: none;" rel="external"><img src="./img/Calculator.png" alt="Points<br>Calculator"><p>Points<br>Calculator</p</a>
 				</div>
 				<div class="ui-block-c" style="text-align:center;">
-					<a href="#" style="text-decoration: none;"><img src="./img/list.jpg" alt="Points<br>List"><p>Points<br>List</p</a>
+					<a href="#" style="text-decoration: none;" rel="external"><img src="./img/list.png" alt="Points<br>List"><p>Points<br>List</p</a>
 				</div>
 				<div class="ui-block-a" style="text-align:center;">
-					<a href="#Settings" style="text-decoration: none;" rel="external"><img src="./img/gear.jpg" alt="Settings"><p>Settings</p></a>	
+					<a href="#Settings" style="text-decoration: none;" rel="external"><img src="./img/gear.png" alt="Settings"><p>Settings</p></a>	
 				</div>
 				<div class="ui-block-b" style="text-align:center;">
 					<img src="./img/WWA.png" alt="WWA">
@@ -38,9 +45,9 @@
 
 				</div>
 				<div class="ui-block-b" style="text-align:center;">
-					<a href="#" style="text-decoration: none;"><img src="./img/weight_loss.png" alt="Weight<br>Progress"><p>Weight<br>Progress</p></a>
+					<a href="#" style="text-decoration: none;" rel="external"><img src="./img/weight_loss.png" alt="Weight<br>Progress"><p>Weight<br>Progress</p></a>
 				</div>
-				<div class="ui-block-c" style="text-align:center;">
+				<div class="ui-block-c" style="text-align:center;" rel="external">
 					
 				</div>
 			</div>
@@ -54,7 +61,7 @@
 	<div data-role="page" data-control-title="Settings" id="Settings">    
 		<div data-theme="b" data-role="header">         
 			<h5>Settings</h5>   
-			<a href="#home" data-icon="home" data-iconpos="right" data-inline="true" data-role="button" class="ui-btn-left">Home</a>   
+			<a href="#home" data-icon="back" data-iconpos="right" data-inline="true" data-role="button" class="ui-btn-left">Back</a>   
 		</div>	  
 		<div data-role="content">        
 			<ul data-role="listview" data-divider-theme="b" data-inset="true">             
@@ -75,6 +82,116 @@
 		</div>
 	</div> <!-- /Settings page --> 
 
+	<!-- Start of Calculator page -->
+	<div data-role="page" id="calculator-page">
+		<div data-role="header" data-theme="b">
+			<h5>Food Points Calculator</h5>
+			<a href="#home" data-icon="back" data-inline="true" data-role="button" class="ui-btn-left">Back</a>  
+		</div><!-- /header -->
+		<div data-role="content" data-theme="c">  
+			<form id="frm-calculator">
+				<div class="mobile_label">Select Points System</div>                                                                  
+				<div data-role="fieldcontain">                                       
+					<select id="select-calculator-points-system" name="select-calculator-points-system" data-inline="false" data-mini="true" data-icon="arrow-d" data-iconpos="right" data-native-menu="false" title="Please select Points System." required>                                          
+						<option value="">- Select -</option>              
+						<option value="1">Classic System</option>             
+						<option value="2">Plus System</option>  
+					</select>                                  
+				</div>  
+				<div id="div-calculator-plus" style="display: none;">
+					<h2>Plus System Calculator</h2>
+					<table cellpadding="0" cellspacing="0">	
+						<col style="width:44px;" />				
+						<col style="width:75px;" />		
+						<col style="width:75px;" />	
+						<tr>	
+							<td>
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+								</div>
+							</td>											                                                   
+							<td>                                                                                 
+								<div class="mobile_label">Fats</div>                                                                                                     
+								<input id="txt-fats-plus" name="txt-fats-plus" data-mini="true" type="text" max="999" title="Please enter fats." required />                                 																   
+							</td>
+							<td>                                                                               
+								<div class="mobile_label">Carbs(lb)</div>                                                                                                      
+								<input id="txt-carbs-plus" name="txt-carbs-plus" data-mini="true" type="text" max="999" title="Please enter carbs." required />                                 															   
+							</td>	
+						</tr>
+						<tr>	
+							<td>
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+								</div>
+							</td>											                                                   
+							<td>                                                                                 
+								<div class="mobile_label">Fiber</div>                                                                                                     
+								<input id="txt-fiber-plus" name="txt-fiber-plus" data-mini="true" type="text" max="999" title="Please enter fiber." required  />                                 																   
+							</td>	
+							<td>                                                                               
+								<div class="mobile_label">Protein(lb)</div>                                                                                                      
+								<input id="txt-protein-plus" name="txt-protein-plus" data-mini="true" type="text" max="999" title="Please enter proteins." required />                                 															   
+							</td>	
+						</tr>						                            
+					</table> 
+				</div>
+				<div id="div-calculator-classic" style="display: none;">
+					<h2>Classic System Calculator</h2>
+					<table cellpadding="0" cellspacing="0">	
+						<col style="width:44px;" />				
+						<col style="width:75px;" />		
+						<col style="width:75px;" />	
+						<tr>	
+							<td>
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+								</div>
+							</td>
+							<td>                                                                                 
+								<div class="mobile_label">Calories</div>                                                                                                     
+								<input id="txt-calories-classic" name="txt-calories-classic" data-mini="true" type="text" max="999" title="Please enter calories." required />                                 																   
+							</td>												                                                   
+							<td>                                                                                 
+								<div class="mobile_label">Fats</div>                                                                                                     
+								<input id="txt-fats-classic" name="txt-fats-classic" data-mini="true" type="text" max="999" title="Please enter fats." required />                                 																   
+							</td>	
+						</tr>
+						<tr>	
+							<td>
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+								</div>
+							</td>											                                                   
+							<td>                                                                                 
+								<div class="mobile_label">Fiber</div>                                                                                                     
+								<input id="txt-fiber-classic" name="txt-fiber-classic" data-mini="true" type="text" max="999" title="Please enter fiber." required />                                 																   
+							</td>
+							<td>
+
+							</td>
+						</tr>						                            
+					</table> 
+				</div>
+ 				<table cellpadding="0" cellspacing="0">					
+					<col style="width:44px;" />					
+					<col style="width:200px;" />	
+					<tr>
+						<td></td>
+						<td>
+			 				<div data-role="fieldcontain" style="width: 300px">
+								<h3 id="h-calculated-points" style="color: green">Please enter above values... </h3>                                                                    									
+							</div>		  
+						</td>
+					</tr> 
+				</table>  
+			</form>
+		</div><!-- /content -->
+		<div data-role="footer" data-theme="b" >
+			<h4>Footer</h4>
+		</div><!-- /footer -->
+	</div><!-- /Calculator page -->	
+
 	<!-- Start of Page boilerplate page -->
 	<div data-role="page" id="#">
 		<div data-role="header" data-theme="b">
@@ -87,11 +204,17 @@
 		</div><!-- /footer -->
 	</div><!-- /page -->	
 
-	<script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script> 
+	<!-- <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script> -->
 	<script src="./js/jquery.mobile-1.3.2.min.js"></script>	   	
 	<script type="text/javascript" src="./js/KeyFilters.js"></script>  
 	<script type="text/javascript" src="./js/zebra_dialog.js"></script> 
 	<script type="text/javascript" src="./js/zebra_datepicker.js"></script>   
+	<script type="text/javascript" src="./js/index.js"></script>
+	<script type="text/javascript" src="./js/FoodPointsCalculator.js"></script>
+
 	<script src="./js/codiqa.ext.min.js"></script>
+
+	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.plugin.js"></script>   
+	<script src="./Plugins/jQuery Keypad 2.0.0/jquery.keypad.js"></script>
 </body>
 </html>

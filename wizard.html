@@ -26,7 +26,7 @@
 		
 		<!-- Unit settings -->
 		<div data-role="content" id="page1-unit-settings">
-			<form id="frmUnitSettings">
+			<form id="frm-unit-settings">
 				<table cellpadding="0" cellspacing="0">					
 					<col style="width:44px;" />					
 					<col style="width:auto;" />					
@@ -70,7 +70,7 @@
 				<br>
 				<hr>
 	        		<div data-role="controlgroup" data-type="horizontal">		    		    		    
-		    			<a href="#" data-role="button" data-theme="f" class="step_button" data-mini="true" id="step-2">1 of 4</a>
+		    			<a href="#" data-role="button" data-theme="f" class="step_button" data-mini="true">1 of 5</a>
 		    			<a href="#" data-role="button" data-theme="e" class="next" style="width: 60px;" data-mini="true">Next ></a>		    
 	        		</div>
 			</form>				
@@ -78,7 +78,7 @@
      
 		<!-- Weight Goal Settings -->
 		<div data-role="content" id="page2-weight-goal-settings">   
-			<form id="frmWeightGoalSettings">          				
+			<form id="frm-weight-goal-settings">          				
    		    		<div data-role="fieldcontain" data-controltype="textinput">             
 					<label for="goal-weight">Enter your weight goal (lb/kg):</label>
 					<div style="width: 75px">             
@@ -100,14 +100,14 @@
 
 	        		<div data-role="controlgroup" data-type="horizontal">		    
 		    			<a href="#" data-role="button" data-theme="b" class="prev" style="width: 60px;" data-mini="true">< Prev</a>		    		    
-		    			<a href="#" data-role="button" data-theme="f" class="step_button" data-mini="true" id="step-2">2 of 4</a>
+		    			<a href="#" data-role="button" data-theme="f" class="step_button" data-mini="true">2 of 5</a>
 		    			<a href="#" data-role="button" data-theme="e" class="next" style="width: 60px;" data-mini="true">Next ></a>		    
 	        		</div>
 			</form>
             	</div>
- 	    	<!-- Points Settings -->
+ 	    	<!-- Daily Points Settings -->
        		<div data-role="content" id="page3-dpa-settings">	
-			<form id="frm-point-settings">
+			<form id="frm-daily-points-settings">
  				<table cellpadding="0" cellspacing="0">					
 					<col style="width:44px;" />					
 					<col style="width:auto;" />	
@@ -292,15 +292,84 @@
 
 	                    	<div data-role="controlgroup" data-type="horizontal">
 			        	<a href="#" data-role="button" data-theme="b" class="prev" style="width: 60px;" data-mini="true">< Prev</a>	
-			            	<a href="#" data-role="button" data-theme="f" id="step-3" data-mini="true" class="step_button">3 of 4</a>	    		    
+			            	<a href="#" data-role="button" data-theme="f" data-mini="true" class="step_button">3 of 5</a>	    		    
 		    	            	<a href="#" data-role="button" data-theme="e" class="next" style="width: 60px;" data-mini="true">Next ></a>
 	    	    	    	</div>
 	            	</form>
 		</div> <!-- /Daily Points Allowance Settings -->
 
+		<!-- Weekly Point Settings -->
+		<div data-role="content" id="page4-wpa-settings">   
+			<form id="frm-weekly-points-settings">      
+ 				<table cellpadding="0" cellspacing="0">					
+					<col style="width:44px;" />					
+					<col style="width:auto;" />	
+					<tr>												
+						<td>							
+							<div>																 
+								<a href="javascript:void(0)" id="daily-points-allowance-help"><img class="info_image_no_label" src="./img/information.jpg" /></a>							
+							</div>                          
+						</td>                                                     
+						<td>                                                                                                                                                  
+							<div data-role="fieldcontain" class="get_dpa">                                       
+								<div>
+									<input type="checkbox" id="ck-enable-weekly-points" name="ck-enable-weekly-points" data-mini="true" value="0">          
+									<label for="ck-enable-weekly-points">Use Weekly Points</label>  		
+								</div>                                
+							</div>  																   
+						</td>	
+					</tr> 
+				</table>
+				<div id="div-wpa-count" style="display: none;">
+					<table cellpadding="0" cellspacing="0">
+						<col style="width:44px;" />					
+						<col style="width: auto;" />	
+						<tr>												
+							<td>							
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+								</div>                          
+							</td>                                                     
+							<td>             
+								<div class="mobile_label">Weekly Points Allowance</div>                                                                                                                                     
+								<input type="text" id="txt-wpa-count" name="txt-wpa-count" data-mini="true" max="99" title="Please enter weekly point allowance amount." required/> 																   
+							</td>	
+						</tr> 
+						<tr>												
+							<td>							
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
+								</div>                          
+							</td>    
+							<td>             
+								<div class="mobile_label">Rollover Day</div>
+								<div data-role="fieldcontain">                                       
+									<select id="select-rollover-day" name="select-rollover-day" data-inline="false" data-mini="true" data-icon="arrow-d" data-iconpos="right" data-native-menu="false" title="Please select rollover day." required>                                          
+										<option value=""> - Select - </option>  
+										<option value="1">Sunday</option>             
+										<option value="2">Monday</option>  
+										<option value="3">Tuesday</option>  
+										<option value="4">Wednesday</option>
+										<option value="5">Thursday</option>
+										<option value="6">Friday</option>
+										<option value="7">Saturday</option>
+									</select>                                  
+								</div>  							
+							</td>	                                                
+						</tr> 
+					</table>    
+				</div>				
+	        		<div data-role="controlgroup" data-type="horizontal">		    
+		    			<a href="#" data-role="button" data-theme="b" class="prev" style="width: 60px;" data-mini="true">< Prev</a>		    		    
+		    			<a href="#" data-role="button" data-theme="f" class="step_button" data-mini="true">4 of 5</a>
+		    			<a href="#" data-role="button" data-theme="e" class="next" style="width: 60px;" data-mini="true">Next ></a>		    
+	        		</div>
+			</form>
+		</div>
+
 	    <!-- Activity Settings -->
-	    <div data-role="content" id="page4-actvity-settings">
-	            <form id="frmActivitySettings">                 
+	    <div data-role="content" id="page5-actvity-settings">
+	            <form id="frm-activity-settings">                 
 		            <table cellpadding="0" cellspacing="0">					
 			            <col style="width:44px;" />					
 				    <col style="width:auto;" />					
@@ -359,7 +428,7 @@
 
 			        <div data-role="controlgroup" data-type="horizontal">
 			        	<a href="#" data-role="button" data-theme="b" class="prev" style="width: 60px;" data-mini="true">< Prev</a>		    		    
-				        <a href="#" data-role="button" data-theme="f" id="step-4" data-mini="true" class="step_button">4 of 4</a>
+				        <a href="#" data-role="button" data-theme="f" data-mini="true" class="step_button">5 of 5</a>
 				        <a href="#" data-role="button" data-theme="e" class="finish" style="width: 60px;" data-mini="true">Done</a>
 			        </div>
 		      </form>

@@ -1,9 +1,15 @@
-$(document).ready(function() {   
-	var page1Id = '#page1-unit-settings';
-	var page2Id = '#page2-weight-goal-settings';
-	var page3Id = '#page3-dpa-settings';
-	var page4Id = '#page4-actvity-settings';
+var page1Id = '#page1-unit-settings';
+var page2Id = '#page2-weight-goal-settings';
+var page3Id = '#page3-dpa-settings';
+var page4Id = '#page4-wpa-settings';
+var page5Id = '#page5-actvity-settings';
 
+var frmDPAId = '#frm-daily-points-settings';
+
+var calculatedDPAResult = '#h3-calculated-dpa';
+
+$(document).ready(function() 
+{   
 	var CLASSIC_POINTS_SYSTEM = 1;
 	var PLUS_POINTS_SYSTEM = 2;
 
@@ -18,29 +24,42 @@ $(document).ready(function() {
 	// Page 1 > Page 2
 	$(page1Id + ' a.next').on('click', function () 
 	{
-		//if ($("#frmUnitSettings").valid())		
+		//if ($("#frm-unit-settings").valid())		
 			UpdatePage(page1Id, page2Id);
 	});
 
 	// Page 2 > Page 3
 	$(page2Id + ' a.next').on('click', function () 
 	{
-		//if ($("#frmWeightGoalSettings").valid())
+		//if ($("#frm-weight-goal-settings").valid())
 			UpdatePage(page2Id, page3Id);	
 	});
 
 	// Page 3 > Page 4
 	$(page3Id + ' a.next').on('click', function () 
 	{
-		if ($("#frm-point-settings").valid()) 
+		if ($(frmDPAId).valid()) 
 			UpdatePage( page3Id, page4Id );	
 	});
 
-	// Page 4 > Finish  
-	$(page4Id + ' a.finish').on('click', function () 
+	// Page 4 > Page 5
+	$(page4Id + ' a.next').on('click', function () 
 	{
-		//if ($("#frmActivitySettings").valid()) 
+		if ($(frmDPAId).valid()) 
+			UpdatePage( page4Id, page5Id );	
+	});
+
+	// Page 5 > Finish  
+	$(page5Id + ' a.finish').on('click', function () 
+	{
+		//if ($("#frm-activity-settings").valid()) 
 			window.history.back();
+	});
+
+	// Page 5 > Page 4
+	$(page5Id + ' a.prev').on('click', function () 
+	{
+		UpdatePage( page5Id, page4Id );	
 	});
 
 	// Page 4  > Page 3
@@ -62,7 +81,7 @@ $(document).ready(function() {
 	});
 
 	// Initialize numeric keypad data input for text boxes
-	$('#goal-weight, #txt-fixed-dpa').keypad(
+	$('#goal-weight, #txt-fixed-dpa, #txt-wpa-count').keypad(
 	{
 		prompt: '', closeText: 'OK', clearText: '<<', backText: '<', 
 		onKeypress: KeyPress,
@@ -88,8 +107,8 @@ $(document).ready(function() {
 
 	function CloseKeypadPanel()
 	{
-		if ($("#frm-point-settings").valid()) CalculateDPA();
-		else $('#h3-calculated-dpa').text('Your Daily Points Allowance...');
+		if ($(frmDPAId).valid()) CalculateDPA();
+		else $(calculatedDPAResult).text('Your Daily Points Allowance...');
 	}			
 
 
@@ -106,17 +125,26 @@ $(document).ready(function() {
 			$('#div-calculated-dpa, #div-dpa-calculation-fields').show();
 			$('#div-dpa-fixed-fields').hide();
 				
-			if ($("#frm-point-settings").valid()) CalculateDPA();
-			else $('#h3-calculated-dpa').text('Your Daily Points Allowance...');
+			if ($(frmDPAId).valid()) CalculateDPA();
+			else $(calculatedDPAResult).text('Your Daily Points Allowance...');
 		}
 	}
 
 	// Event handler for selecting whether daily points plus allowance is calculated or entered manually
 	$("#ck-fixed-value").bind('change', function(event, ui) 
 	{
-		// alert('check change');
 		ShowHideDPAFields();	
 	});
+
+	// Event handler for selecting whether weekly points allowance is enabled
+	$('#ck-enable-weekly-points').on('change', function(e) {
+		// Doesn't work in internet explorer 8		
+		e.stopPropagation(); // to prevent event from bubbling up
+
+		var checked = $(this).is(':checked');
+		if (checked) $('#div-wpa-count').show();
+		else $('#div-wpa-count').hide();
+  	});
 
 	// Plus system event handler for selecting point system
 	$("#select-point-system").bind('change', function(event, ui) 
@@ -143,22 +171,22 @@ $(document).ready(function() {
 		//if (selectedIndex == 0 || selectedIndex == 1) $('#div-breastfeeding-mom').hide();
 		//else if (selectedIndex == 2) $('#div-breastfeeding-mom').show();
 		
-		if ($("#frm-point-settings").valid()) CalculateDPA();
-		else $('#h3-calculated-dpa').text('Your Daily Points Allowance...');
+		if ($(frmDPAId).valid()) CalculateDPA();
+		else $(calculatedDPAResult).text('Your Daily Points Allowance...');
 	});
 
 	// Plus system event handler for selecting gender 
 	$("#select-breastfeeding").bind('change', function(event, ui) 
 	{		
-		if ($("#frm-point-settings").valid()) CalculateDPA();
-		else $('#h3-calculated-dpa').text('Your Daily Points Allowance...');
+		if ($(frmDPAId).valid()) CalculateDPA();
+		else $(calculatedDPAResult).text('Your Daily Points Allowance...');
 	});			
 
 	// Plus system event handler for selecting gender 
 	$("#select-activity-level").bind('change', function(event, ui) 
 	{		
-		if ($("#frm-point-settings").valid()) CalculateDPA();
-		else $('#h3-calculated-dpa').text('Your Daily Points Allowance...');
+		if ($(frmDPAId).valid()) CalculateDPA();
+		else $(calculatedDPAResult).text('Your Daily Points Allowance...');
 	});
 
 	function CalculateDPA()
@@ -172,16 +200,6 @@ $(document).ready(function() {
 		var selected_activity_level = $("#select-activity-level").val()
 
 		var selectedPointsSystem = $("#select-point-system").find(":selected").val();
-
-		// Validate input
-		// if (!DPAInputIsValid(selectedPointsSystem, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)) 
-		//if (!DPAInputIsValid(selectedPointsSystem, selected_gender, age, weight, feet, inches, selected_activity_level)) 
-		//{
-		//	//$('#p-calculated-dpa').text('To calculate you DPA, please enter missing values');
-		//	$('#hf-calculated-dpa').val('');
-		//	$('#h3-calculated-dpa').text('Your Daily Points Allowance = ');
-		//	return;
-		//}
 		
 		age = parseInt(age);
 		weight = parseInt(weight);		
@@ -195,10 +213,8 @@ $(document).ready(function() {
 			if (dpa != 0) 
 			{
 				$('#hf-calculated-dpa').val(dpa);
-				$('#h3-calculated-dpa').text('Your Daily Points Allowance = ' + dpa);
+				$(calculatedDPAResult).text('Your Daily Points Allowance = ' + dpa);
 			}
-
-			//$('#p-calculated-dpa').text('');	
 		}
 		else if (selectedPointsSystem == PLUS_POINTS_SYSTEM)
 		{
@@ -208,83 +224,66 @@ $(document).ready(function() {
 			if (dpa != 0) 
 			{
 				$('#hf-calculated-dpa').val(dpa);
-				$('#h3-calculated-dpa').text('Your Daily Points Allowance = ' + dpa);
+				$(calculatedDPAResult).text('Your Daily Points Allowance = ' + dpa);
 			}
-
-			//$('#p-calculated-dpa').text('');
 		}		
 	}
-	
-/*
-	// function DPAInputIsValid(pointSystem, selected_gender, age, weight, feet, inches, selected_breastfeeding_status, selected_activity_level)
-	function DPAInputIsValid(pointSystem, selected_gender, age, weight, feet, inches, selected_activity_level)
-	{
-		if (selected_gender == '' || 
-			age == '' ||
-			weight == '' ||
-			feet == '' ||
-			inches == '') return false;
-
-		// if (selected_gender == 2 && selected_breastfeeding_status == 0) return false;	
-
-		if (pointSystem == CLASSIC_POINTS_SYSTEM && selected_activity_level == '') return false;
-
-		return true;			
-	}
-*/
-
 });
 	
 $(document).on('pagecreate',function()
 {
+	// Initialize DatePicker PlugIn
 	var picker = $( '#weight-goal-date', this );    
 	picker.mobipick( { intlStdDate: false, minDate: (new XDate()).addDays(0), maxDate: (new XDate()).addYears(5) } ); 
 });
 	
-$(document).on('pageshow', '#wizard-page, #home-page', function (event, ui) 
+$(document).on('pageshow', '#wizard-page', function (event, ui) 
 {
     	var args = document.location.search.substring(1).split('&');		
 
     	if (args != '') 
     	{
-			var kvp0 = args[0].split('=');
-			var id = "#" + kvp0[1];
-			var kvp1 = args[1].split('=');
-			var show_buttons = kvp1[1] == 'true';	
-			showDiv(id, show_buttons);
+		var kvp0 = args[0].split('=');
+		var id = "#" + kvp0[1];
+		var kvp1 = args[1].split('=');
+		var show_buttons = kvp1[1] == 'true';	
+		showDiv(id, show_buttons);
     	}
    	else 
 	{
-        showDiv("#page1-unit-settings", true);
-    }
+        	showDiv(page1Id, true);
+    	}
 });	
 		
 function showDiv(pageId, show_buttons)
 {
     	// Hide all page divs
-    	$('#page1-unit-settings, #page2-weight-goal-settings, #page3-dpa-settings, #page3-points-allowance-plus-settings, #page3-points-allowance-classic-settings, #page4-actvity-settings').hide();
+	$(page1Id).hide();
+	$(page2Id).hide();
+	$(page3Id).hide();
+	$(page4Id).hide();
+	$(page5Id).hide();
 
     	// Show specified div
     	$(pageId).show();
 
-		// Set Header Text
-		setHeaderText(pageId, show_buttons);
+	// Set Header Text
+	setHeaderText(pageId, show_buttons);
 			
-		// Show or Hide back button
-		if (show_buttons) $('#wizard-back-button').hide();
-		else $('#wizard-back-button').show();  
+	// Show or Hide back button
+	if (show_buttons) $('#wizard-back-button').hide();
+	else $('#wizard-back-button').show();  
 }
 
 function setHeaderText(pageId, isWizard)
 {	
 	var wizardHeaderId = '#wizard-header';
 
-	if (pageId == '#page1-unit-settings') $(wizardHeaderId).text('Unit Settings'); 
-	else if (pageId == '#page2-weight-goal-settings') $(wizardHeaderId).text('Weight Goal Settings'); 
-	else if (pageId == '#page3-dpa-settings') $(wizardHeaderId).text('Daily Points Settings'); 
-	else if (pageId == '#page3-points-allowance-plus-settings') $(wizardHeaderId).text('Daily Points Allowance Plus Settings'); 
-	else if (pageId == '#page3-points-allowance-classic-settings') $(wizardHeaderId).text('Daily Points Allowance Classic Settings'); 
-	else if (pageId == '#page4-actvity-settings') $(wizardHeaderId).text('Activity Settings'); 
+	if (pageId == page1Id) $(wizardHeaderId).text('Unit Settings'); 
+	else if (pageId == page2Id) $(wizardHeaderId).text('Weight Goal Settings'); 
+	else if (pageId == page3Id) $(wizardHeaderId).text('Daily Points Settings'); 
+	else if (pageId == page4Id) $(wizardHeaderId).text('Weekly Points Settings'); 
+	else if (pageId == page5Id) $(wizardHeaderId).text('Activity Settings'); 
 }
 
 
