@@ -243,6 +243,7 @@
                 });
 
                 elements.down.on("keydown", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     var code = ev.keyCode || ev.which;
 
                     if (code === 32 || code === 13) {
@@ -255,6 +256,7 @@
                 });
 
                 elements.down.on("keyup", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     var code = ev.keyCode || ev.which;
 
                     if (code === 32 || code === 13) {
@@ -263,6 +265,7 @@
                 });
 
                 elements.up.on("keydown", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     var code = ev.keyCode || ev.which;
 
                     if (code === 32 || code === 13) {
@@ -275,6 +278,7 @@
                 });
 
                 elements.up.on("keyup", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     var code = ev.keyCode || ev.which;
 
                     if (code === 32 || code === 13) {
