@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>DataTables example</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">	
+		
+		<link href="./css/WeightProgress.css" rel="stylesheet">
+
+		<link href="./css/jquery.mobile-1.3.2.min.css" rel="stylesheet">
+		<link href="./css/jquery.mobile-1.3.2.min.css" rel="stylesheet">
+		<style type="text/css" title="currentStyle">
+			@import "./Plugins/DataTables-1.9.4/media/css/demo_page.css"; 
+			@import "./Plugins/DataTables-1.9.4/media/css/demo_table.css";
+		</style>
+	</head>
+	<body>
+		<div data-role="page" id="diary-page">
+			<div data-role="header" data-theme="b">
+				<h2>Daily Diary</h2>
+			</div>
+			<div data-role="content" data-theme="c">  
+
+			<div>
+				<div id="divDate">date</div>
+				<div id="divWeight" style="color: red">weight</div>
+
+				<div id="pbTotalPoints" class="parent"></div>
+				<div id="pbUsedPoints" class="div1"></div> 
+				<div id="pbRemainingPoints" class="div2"></div> 
+			</div>
+
+			<div align="left">
+				<div id="dynamic"></div>
+				<div class="spacer"></div>
+			</div>
+		
+			<div data-role="footer" data-theme="b" data-position="fixed">
+				<h2>Footer</h2>
+			</div>
+		</div>	
+
+		<script src="./js/jquery-1.11.0.min.js"></script>			 
+		<script src="./js/jquery.mobile-1.3.2.min.js"></script>	 	
+		<script type="text/javascript" src="./js/DailyDiary.js"></script>
+
+		<script type="text/javascript" language="javascript" src="./Plugins/DataTables-1.9.4/media/js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="./Plugins/DataTables-1.9.4/media/js/jquery.dataTables.js"></script>
+
+		<script type="text/javascript" src="./js/WeightProgress.js"></script>
+
+		<script type="text/javascript" charset="utf-8">
+			var aDataSet = [
+				['<span style="color:blue">06:00</span> Internet Explorer 4.0', '<span style="color:blue">(2) </span><span style="color:red">52</span>/<span style="color:green">54</span>'],
+				['<span style="color:blue">07:00</span> Internet Explorer 5.0', '<span style="color:red">51</span>/<span style="color:green">54</span>'],
+				['<span style="color:blue">07:34</span> Internet Explorer 5.5', '<span style="color:red">50</span>/<span style="color:green">54</span>'],				
+				['<span style="color:blue">08:22</span> Mozilla 1.2', '<span style="color:red">47</span>/<span style="color:green">54</span>'],
+				['<span style="color:blue">10:47</span> Mozilla 1.3', '<span style="color:red">43</span>/<span style="color:green">54</span>'],
+				['<span style="color:blue">11:09</span> Mozilla 1.4', '<span style="color:red">41</span>/<span style="color:green">54</span>'],
+				['<span style="color:blue">12:38</span> Epiphany 2.20', '<span style="color:red">40</span>/<span style="color:green">54</span>'],
+				['<span style="color:blue">13:12</span> Safari 1.2', '<span style="color:red">38</span>/<span style="color:green">54</span>'],
+				['<span style="color:blue">13:53</span> Safari 1.3', '5'],
+				['<span style="color:blue">14:22</span> iPod Touch / iPhone', '1'],
+				['<span style="color:blue">15:14</span> S60', '0'],
+				['<span style="color:blue">15:43</span> Opera 7.0', '3'],
+				['<span style="color:blue">16:43</span> Opera 7.5', '3'],				
+				['<span style="color:blue">17:12</span> Opera 9.5','3'],
+				['<span style="color:blue">17:12</span> Opera for Wii', '3'],
+				['<span style="color:blue">17:13</span> Nokia N800', '1'],
+				['<span style="color:blue">17:13</span> Nintendo DS browser','2'],
+				['<span style="color:blue">17:14</span> Konqureror 3.1', '2'],
+				['<span style="color:blue">17:15</span> Konqureror 3.3','2'],
+				['<span style="color:blue">18:28</span> Konqureror 3.5', '2'],
+				['<span style="color:blue">18:28</span> Internet Explorer 4.5', '3'],
+				['<span style="color:blue">18:30</span> Internet Explorer 5.1', '1'],
+				['<span style="color:blue">18:41</span> Internet Explorer 5.2', '1'],
+				['<span style="color:blue">19:43</span> NetFront 3.1', '2'],
+				['<span style="color:blue">19:59</span> Lynx', '1'],
+				['<span style="color:blue">20:12</span> IE Mobile', '3']
+			];
+		</script>
+		
+		<script type="text/javascript" charset="utf-8">			
+			$(document).ready(function() {
+				$('#dynamic').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="basic-grid"></table>' ).width(340);
+				$('#basic-grid').dataTable( {
+					"aaData": aDataSet,
+					"aoColumns": [
+						{ "sTitle": "Diary Entry", "sClass": "left", "sWidth": "85%" },
+						{ "sTitle": "Bal", "sClass": "left"}
+					]
+				});
+			} );
+		</script>
+	</body>
+</html>
+

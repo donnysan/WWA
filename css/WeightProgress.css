@@ -1,0 +1,24 @@
+.parent
+{
+	border:1px solid red;
+}
+
+.div1 
+{
+
+    	float: left;
+   	width: 40%;
+	background-color: #FF0000;
+}
+
+.div2 
+{  			
+    	float: left;
+    	width: 60%;
+	background-color: #ffff00;
+}
+
+.block_container
+{
+    	text-align:center;
+}
