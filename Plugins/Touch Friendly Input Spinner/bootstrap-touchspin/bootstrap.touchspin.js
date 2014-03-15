@@ -209,6 +209,7 @@
 
             function _bindEvents() {
                 originalinput.on("keydown", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     var code = ev.keyCode || ev.which;
 
                     if (code === 38) {
@@ -228,6 +229,7 @@
                 });
 
                 originalinput.on("keyup", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     var code = ev.keyCode || ev.which;
 
                     if (code === 38) {
@@ -287,6 +289,7 @@
                 });
 
                 elements.down.on("mousedown touchstart", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     downOnce();
                     startDownSpin();
 
@@ -295,6 +298,7 @@
                 });
 
                 elements.up.on("mousedown touchstart", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     upOnce();
                     startUpSpin();
 
@@ -303,6 +307,7 @@
                 });
 
                 elements.up.on("mouseout touchleave touchend touchcancel", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     if (!spinning) {
                         return;
                     }
@@ -312,6 +317,7 @@
                 });
 
                 elements.down.on("mouseout touchleave touchend touchcancel", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     if (!spinning) {
                         return;
                     }
@@ -321,6 +327,7 @@
                 });
 
                 elements.down.on("mousemove touchmove", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     if (!spinning) {
                         return;
                     }
@@ -330,6 +337,7 @@
                 });
 
                 elements.up.on("mousemove touchmove", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     if (!spinning) {
                         return;
                     }
@@ -339,6 +347,7 @@
                 });
 
                 $(document).on("mouseup touchend touchcancel", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     if (!spinning) {
                         return;
                     }
@@ -348,6 +357,7 @@
                 });
 
                 $(document).on("mousemove touchmove scroll scrollstart", function(ev) {
+					ev.stopPropagation(); // to prevent event from bubbling up
                     if (!spinning) {
                         return;
                     }
@@ -358,6 +368,7 @@
 
                 if (settings.mousewheel) {
                     originalinput.on("mousewheel DOMMouseScroll", function(ev) {
+						ev.stopPropagation(); // to prevent event from bubbling up
                         var delta = ev.originalEvent.wheelDelta || -ev.originalEvent.detail;
 
                         ev.stopPropagation();
