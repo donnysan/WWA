@@ -1,4 +1,4 @@
-var plusSystem = false;
+var plusSystem = true
 var CALCULATOR_PRECISION = -1;
 
 var calculationResultId = '#h-calculated-points';
@@ -28,13 +28,11 @@ $(document).ready(function()
 		{
 			if (plusSystem)
 			{
-
 				var fats = $("#txt-fats-plus").val();
 				var carbs = $("#txt-carbs-plus").val();
 				var fiber = $("#txt-fiber-plus").val();
 				var protein = $("#txt-protein-plus").val();
 
-				// alert('fats = ' + fats + ' carbs = ' + carbs + 'fiber = ' + fiber + ' protein = ' + protein);
  				var result = calculateFoodPointsPlus(fats, carbs, fiber, protein, CALCULATOR_PRECISION);
 				$(calculationResultId).text(result);
 			}
@@ -44,7 +42,6 @@ $(document).ready(function()
 				var fats = $("#txt-fats-classic").val();
 				var fiber = $("#txt-fiber-classic").val();
 
-				// alert('calories = ' + calories + ' fats = ' + fats + 'fiber = ' + fiber);
 				var result = calculateFoodPointsClassic(calories, fats, fiber, CALCULATOR_PRECISION);
 				$(calculationResultId).text(result);
 			}
@@ -79,10 +76,6 @@ $(document).ready(function()
 
 $(document).on('pageshow', '#calculator-page', function (event, ui) 
 {
-	alert('calculator show');
-
-	CALCULATOR_PRECISION = WHOLE_NUMBER;
-
 	var myselect = $("select#select-calculator-points-system");
 
 	if (plusSystem)

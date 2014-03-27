@@ -30,23 +30,23 @@
 	<script type="text/javascript">
 		$( document ).on( "pagecreate", "#advanceddemo", function() {
 			SyntaxHighlighter.all();
-
+ 
 			$( "input.mobipick-demo-default-date", this ).mobipick();
-
+ 
 			$( "input.mobipick-demo-spanish", this ).mobipick({
 				locale: "es"
 			});
-
+ 
 			$( "input.mobipick-demo-min-max-date", this ).mobipick();
-
+ 
 			$( "input.mobipick-accuracy-month", this ).mobipick({
 				accuracy: "month"
 			});
-
+ 
 			$( "input.mobipick-accuracy-year", this ).mobipick({
 				accuracy: "year"
 			});
-
+ 
 			$( "input.mobipick-accuracy-year-min-max-date", this ).mobipick({
 				accuracy: "year"
 			});
@@ -61,7 +61,7 @@
 			$( "input.mobipick-human-readable" ).mobipick({
 				intlStdDate: false
 			});
-
+ 
 			$( "input.mobipick-date-min-dynamic" ).mobipick({
 				minDate: (new XDate()).addDays( 4 )
 			});
@@ -69,11 +69,11 @@
 			$( "a.reset" ).on( "tap", function() {
 				pickerWithReset.mobipick("option", "date", null).mobipick("updateDateInput");
 			});
-
+ 
 			$( "input.mobipick-mm-dd-yyyy" ).mobipick({
 				dateFormat: "MM-dd-yyyy"
 			});
-
+ 
             var buttonPicker = $( "input.mobipick-programmatically", this ).mobipick();
             $( "button.mobipick-programmatically", this ).on( "tap click", function() {
                 buttonPicker.trigger( "click" );
@@ -85,7 +85,7 @@
                 // window.alert( buttonPicker.mobipick( "dateString" ) );
                 // window.alert( buttonPicker.mobipick( "localeString" ) );
             })
-
+ 
         });
 	</script>
 </head>
@@ -231,7 +231,8 @@
             </div>
 			Created by Christoph Baudson. Feel free to check out my <a href="http://sustainablepace.net">blog</a>.
 		</div>
-
+ 
 	</div>
 </body>
 </html>
+

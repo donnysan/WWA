@@ -1,0 +1,11 @@
+// http://www.kumulos.com/2012/08/17/backend-as-a-service-phonegap/
+// http://community.kumulos.com/discussion/32/java-integration
+var apiKey = 'c2hjg6y35s37nzhpm02fw0svh2sy929g';
+var secretKey = 't76ck9k8';
+var k = Kumulos.initWithAPIKeyAndSecretKey(apiKey, secretKey); 
+k.call('METHOD_ALIAS', 
+       {param1: 'value1'}, 
+       // Handle response object (either array of objects or number)
+       function (response) { }, 
+       // Handle error
+       function (error) {  });

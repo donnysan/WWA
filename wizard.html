@@ -80,14 +80,14 @@
 		<div data-role="content" id="page2-weight-goal-settings">   
 			<form id="frm-weight-goal-settings">          				
    		    		<div data-role="fieldcontain" data-controltype="textinput">             
-					<label for="goal-weight">Enter your weight goal (lb/kg):</label>
+					<label for="txt-goal-weight">Enter your weight goal (lb/kg):</label>
 					<div style="width: 75px">             
-						<input type="text" data-mini="true" name="goal-weight" id="goal-weight" name="goal-weight" max="999" title="Please enter your weight goal." required>
+						<input type="text" data-mini="true" name="txt-goal-weight" id="txt-goal-weight" name="txt-goal-weight" max="999" title="Please enter your weight goal." required>
 					</div>      
 				</div>  
        				                  
 				<table cellpadding="0" cellspacing="0">										
-					<col style="width:auto;" />					
+					<col style="width:300px;" />					
 					<tr>												                                                   
 						<td>                                                                                 
 							<div class="mobile_label">Enter your weight goal date</div>                                                                  
@@ -218,51 +218,51 @@
 								</div> 																   
 							</td>	
 						</tr>	
--->				                            
-					</table>                 
+-->
+				                            
+					</table>          
+					<table cellpadding="0" cellspacing="0">	
+						<col style="width:44px;" />									
+						<col style="width:300px;" />					
+						<tr>	
+							<td>
+								<div>																 
+									<a href="javascript:void(0)" id=""><img class="info_image_no_label" src="./img/information.jpg" /></a>							
+								</div>
+							</td>											                                                   
+							<td>                                                                                 
+								<div class="mobile_label">Enter your date of birth</div>                                                                  
+								<div data-role="fieldcontain">                                       
+									<input type="text" id="txt-dob" name="txt-dob" data-mini="true" title="Please enter your date of birth." required/>
+								</div>  																   
+							</td>	
+						</tr>								                            
+					</table>          
 					<table cellpadding="0" cellspacing="0">	
 						<col style="width:44px;" />				
-						<col style="width:75px;" />		
-						<col style="width:75px;" />	
+						<col style="width:75px;" />
+						<col style="width:75px;" />
+						<col style="width:75px;" />			
 						<tr>	
 							<td>
 								<div>																 
 									<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
 								</div>
-							</td>											                                                   
-							<td>                                                                                 
-								<div class="mobile_label">Age</div>                                                                                                     
-								<input id="txt-age" name="txt-age" data-mini="true" type="text" max="999" title="Please enter age." required />                                 																   
-							</td>													                                                   
+							</td>											                                                   													                                                   
 							<td>                                                                               
 								<div class="mobile_label">Weight(lb)</div>                                                                                                      
 								<input id="txt-weight" data-mini="true" type="text" max="999" title="Please enter weight." required />                                 															   
 							</td>	
+							<td>                
+								<div class="mobile_label">Height(ft)</div>                                                                                                                               
+								<input type="text" id="txt-height-ft" name="txt-height-ft" data-mini="true" max="99" title="Please enter height." required/>																   
+							</td>													                                                   
+							<td>             
+								<div class="mobile_label">Height(in)</div>                                                                                                                                     
+								<input type="text" id="txt-height-in" name="txt-height-in" data-mini="true" max="99" title="Please enter height." required/> 																   
+							</td>
 						</tr>					                            
 					</table>               								
-					<div>         
-						         
-						<table cellpadding="0" cellspacing="0">	
-							<col style="width:44px;" />	
-							<col style="width:75px;" />		
-							<col style="width:75px;" />	
-							<tr>	
-								<td>
-									<div>																 
-										<a href="javascript:void(0)" id=""><img class="info_image" src="./img/information.jpg" /></a>							
-									</div>
-								</td>				                                                   
-								<td>                
-									<div class="mobile_label">Height (ft)</div>                                                                                                                               
-									<input type="text" id="txt-height-ft" name="txt-height-ft" data-mini="true" max="99" title="Please enter height." required/>																   
-								</td>													                                                   
-								<td>             
-									<div class="mobile_label">Height (in)</div>                                                                                                                                     
-									<input type="text" id="txt-height-in" name="txt-height-in" data-mini="true" max="99" title="Please enter height." required/> 																   
-								</td>	
-							</tr>					                            
-						</table>               
-					</div>	
 
 					<div id="div-activity-level" style="display: none;">
 						<table cellpadding="0" cellspacing="0">	
@@ -447,5 +447,8 @@
 	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/external/xdate.js"></script> 
 	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/external/xdate.i18n.js"></script> 
 	<script type="text/javascript" src="./Plugins/Android-Style-Date-Picker-For-jQuery-Mobile-Mobi-Pick/js/mobipick.js"></script>
+
+	<script type="text/javascript" src="./js/Kumulos.min.js"></script>
+	<script type="text/javascript" src="./js/DataStorage.js"></script>
 </body>
 </html>	

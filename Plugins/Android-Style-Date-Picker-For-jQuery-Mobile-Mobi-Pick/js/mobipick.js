@@ -218,6 +218,7 @@ $.widget( "sustainablepace.mobipick", $.mobile.widget, {
 	dateString: function() {
 		var format = this._getDateFormat(),
 		    date   = this._getDate();
+
 		return !date ? '' : date.toString( this.options[ format ] );
 	},
 	localeString: function() {
